@@ -75,22 +75,22 @@
         }
       }
     })
+    .state('app.signin', {
+      url: '/signin',
+      views: {
+        'menuContent': {
+          templateUrl: 'signin.html',
+          controller: 'signin'
+        }
+      }
+    })
    .state('profile', {
     url: '/profile',
     templateUrl: 'profile.html',
       controller: 'ProfileCtrl'
   })
 
-//  .state('app.brow', {
-//      url: '/brow',
-//      views: {
-//        'menuContent': {
-//          templateUrl: 'brow.html',
-//            controller: 'BrowCtrl'
-//         
-//        }
-//      }
-//    })
+
   .state('app.single', {
     url: '/profile/:profileId',
     views: {
