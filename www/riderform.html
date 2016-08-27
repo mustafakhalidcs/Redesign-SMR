@@ -1,0 +1,61 @@
+<ion-modal-view class="transparent">  
+ <ion-content class="padding dform" has-bouncing="false" >
+      <div class="list fond">
+          
+
+              <div class="item item-text-wrap">                
+               <h2 class="blue pad10">Choose your RideShare</h2>
+              </div>
+          <form    
+name="RiderForm" novalidate>
+              <div class="item item-icon-left item-right">
+                   <i class="icon ion-location"></i>
+                   <input type="text" ng-model="cl" name="cl" placeholder="Current Location" required>
+                   <p>
+  <span style="color:red" ng-show="RiderForm.cl.$dirty && RiderForm.cl.$invalid ">
+
+  <span ng-show="RiderForm.cl.$error.required">Location is required.</span>
+  </span></p>
+              </div>
+              <div class="item item-icon-left item-right">
+                   <i class="icon ion-arrow-graph-up-right"></i>
+                   <input type="text" ng-model="des" name="des" placeholder="Destination" required>
+                  <p>
+  <span style="color:red" ng-show="RiderForm.des.$dirty && RiderForm.des.$invalid ">
+
+  <span ng-show="RiderForm.des.$error.required">Location is required.</span>
+  </span></p>
+              </div>
+              <div class="item item-icon-left item-right">
+                   <i class="icon ion-android-calendar"></i>
+                   <input type="date" ng-model="d" name="d" placeholder="Date" required>
+                  <p>
+  <span style="color:red" ng-show="RiderForm.d.$dirty && RiderForm.d.$invalid " >
+
+  <span ng-show="RiderForm.d.$error.required">Location is required.</span>
+  </span></p>
+              </div>
+              <div class="item item-icon-left item-right">
+                   <i class="icon ion-android-car"></i> 
+                   <input type="text" ng-model="sr" name="sr" placeholder="Seats Required" required>
+                  <p>
+  <span style="color:red" ng-show="RiderForm.sr.$dirty && RiderForm.sr.$invalid " >
+
+  <span ng-show="RiderForm.sr.$error.required">Location is required.</span>
+  </span></p>
+              </div>
+               <div class="item item-icon-left item-center">
+                  <div class="buttons rite" >
+                    <button class="button button-clear cancel " ng-click="modal.hide()" >
+                      Cancel
+                    </button>
+                    <button class="button button-clear post" >
+                   Post
+                    </button>
+                </div>
+              </div>
+          </form>
+     </div>
+ </ion-content>
+</ion-modal-view>
+

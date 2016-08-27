@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="node_modules/sweetalert/lib/sweet-alert.css">
+    </head>
+    <body ng-app="alertDemo">
+        <div ng-controller="demoCtrl as demo"> 
+            <p>
+                <h2>Simple Alert</h2>
+                <button ng-click="demo.alert()">click</button>
+            </p>
+            <p>
+                <h2>Simple Confirm</h2>
+                <button ng-click="demo.confirm()">click</button>
+            </p>
+        </div>
+        <script src="node_modules/angular/angular.min.js"></script>
+        <script src="node_modules/angular-sweetalert/SweetAlert.min.js"></script>
+        <script src="node_modules/sweetalert/lib/sweet-alert.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

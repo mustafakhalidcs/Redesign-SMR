@@ -1,0 +1,34 @@
+.blue{
+    color:#155877 !important;
+    white-space:nowrap;
+}
+
+.gray{
+   background:#ebebeb;
+}
+.gren{
+    color:#119696;
+}
+.bluebtn{
+background:#155877; white-space:nowrap;
+}
+.grenbtn{
+    background:#09c3c3; white-space:nowrap;
+}
+.bluebtn:hover{
+    background:#0f4056 !important;
+    color:#fff;
+}
+.grenbtn:hover{
+    background:#0badad !important;
+    color:#fff;
+}
+.fond{
+    background:#f3eeda;
+}
+.title{
+    color:#fff;
+}
+.white{
+    background:#fff;
+}

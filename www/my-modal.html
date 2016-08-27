@@ -1,0 +1,86 @@
+
+<ion-modal-view class="transparent">
+       
+        <ion-content class="padding dform " has-bouncing="false" >
+  
+                      <div class="list list-inset white pad20 ">
+          <h3 class="blue">Fill Form</h3>
+                          <form    
+name="myForm" novalidate>
+
+               <p>
+    <label class="item item-input">
+     <i class="icon ion-location placeholder-icon"></i>
+  <input type="text" name="location" ng-model="location" placeholder="Current Location" required>
+        <p>
+  <span style="color:red" ng-show="myForm.location.$dirty && myForm.location.$invalid ">
+
+  <span ng-show="myForm.location.$error.required">Location is required.</span>
+  </span></p>
+    </label>
+</p>
+               <p>
+    <label class="item item-input">
+     <i class="icon ion-arrow-graph-up-right placeholder-icon"></i>
+  <input type="text" name="destination" ng-model="destination" placeholder="destination" required>
+        <p>
+  <span style="color:red" ng-show="myForm.destination.$dirty && myForm.destination.$invalid ">
+  <span ng-show="myForm.destination.$error.required">Destination is required.</span>
+  </span></p>
+    </label>
+</p>
+               <p>
+    <label class="item item-input">
+     <i class="icon ion-map placeholder-icon"></i>
+  <input type="text" name="map" ng-model="map" placeholder="Route" required>
+  <p><span style="color:red" ng-show="myForm.map.$dirty && myForm.map.$invalid ">
+  <span ng-show="myForm.map.$error.required">Provide the route.</span>
+  </span></p>
+    </label>
+</p>
+               <p>
+    <label class="item item-input">
+     <i class="icon ion-android-calendar placeholder-icon"></i>
+  <input type="date" name="date" ng-model="date" placeholder="Date" required>
+  <p><span style="color:red" ng-show="myForm.date.$dirty && myForm.date.$invalid ">
+  <span ng-show="myForm.date.$error.required">Mention the date.</span>
+  </span></p>
+    </label>
+</p>
+               <p>
+    <label class="item item-input">
+     <i class="icon ion-ios-people placeholder-icon"></i>
+  <input type="number" name="phc" ng-model="phc" placeholder="Per head charge" required>
+  <p><span style="color:red" ng-show="myForm.phc.$dirty && myForm.phc.$invalid ">
+  <span ng-show="myForm.phc.$error.required">Mention per head charge.</span>
+  </span></p>
+    </label>
+</p>
+               <p>
+    <label class="item item-input">
+     <i class="icon ion-android-car placeholder-icon"></i>
+  <input type="number" name="as" ng-model="as" placeholder="Available Seats" required>
+  <p><span style="color:red" ng-show="myForm.as.$dirty && myForm.as.$invalid ">
+  <span ng-show="myForm.as.$error.required">No. of seats required.</span>
+  </span></p>
+    </label>
+</p>
+                              <div class="row" >
+                                  <div class="col-50">
+                                       <button class="button  button-small button-block buttondr bluebtn"  type="submit" ng-disabled="myForm.location.$dirty && myForm.location.$invalid ||
+  myForm.destination.$dirty && myForm.destination.$invalid ||myForm.route.$dirty && myForm.route.$invalid || myForm.date.$dirty && myForm.date.$invalid || myForm.phc.$dirty && myForm.phc.$invalid || myForm.as.$dirty && myForm.as.$invalid">
+  Post
+</button>
+                                      </div>
+                                <div class="col-50">  <button class="button button-small button-calm button-block" ng-click="modal.hide()" >
+  Cancel
+</button>
+                                  </div>
+</div>
+
+
+</form>
+            </div>
+ </ion-content>
+</ion-modal-view>
+
