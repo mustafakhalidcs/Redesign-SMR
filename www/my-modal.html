@@ -13,7 +13,7 @@ name="myForm" novalidate>
      <i class="icon ion-location placeholder-icon"></i>
   <input type="text" name="location" ng-model="location" placeholder="Current Location" required>
         <p>
-  <span style="color:red" ng-show="myForm.location.$dirty && myForm.location.$invalid ">
+  <span style="color:red" class="pad30" ng-show="myForm.location.$dirty && myForm.location.$invalid ">
 
   <span ng-show="myForm.location.$error.required">Location is required.</span>
   </span></p>
@@ -24,7 +24,7 @@ name="myForm" novalidate>
      <i class="icon ion-arrow-graph-up-right placeholder-icon"></i>
   <input type="text" name="destination" ng-model="destination" placeholder="destination" required>
         <p>
-  <span style="color:red" ng-show="myForm.destination.$dirty && myForm.destination.$invalid ">
+  <span style="color:red" class="pad30" ng-show="myForm.destination.$dirty && myForm.destination.$invalid ">
   <span ng-show="myForm.destination.$error.required">Destination is required.</span>
   </span></p>
     </label>
@@ -33,7 +33,7 @@ name="myForm" novalidate>
     <label class="item item-input">
      <i class="icon ion-map placeholder-icon"></i>
   <input type="text" name="map" ng-model="map" placeholder="Route" required>
-  <p><span style="color:red" ng-show="myForm.map.$dirty && myForm.map.$invalid ">
+  <p><span style="color:red" class="pad30" ng-show="myForm.map.$dirty && myForm.map.$invalid ">
   <span ng-show="myForm.map.$error.required">Provide the route.</span>
   </span></p>
     </label>
@@ -42,7 +42,7 @@ name="myForm" novalidate>
     <label class="item item-input">
      <i class="icon ion-android-calendar placeholder-icon"></i>
   <input type="date" name="date" ng-model="date" placeholder="Date" required>
-  <p><span style="color:red" ng-show="myForm.date.$dirty && myForm.date.$invalid ">
+  <p><span style="color:red" class="pad30" ng-show="myForm.date.$dirty && myForm.date.$invalid ">
   <span ng-show="myForm.date.$error.required">Mention the date.</span>
   </span></p>
     </label>
@@ -51,7 +51,7 @@ name="myForm" novalidate>
     <label class="item item-input">
      <i class="icon ion-ios-people placeholder-icon"></i>
   <input type="number" name="phc" ng-model="phc" placeholder="Per head charge" required>
-  <p><span style="color:red" ng-show="myForm.phc.$dirty && myForm.phc.$invalid ">
+  <p><span style="color:red" class="pad30" ng-show="myForm.phc.$dirty && myForm.phc.$invalid ">
   <span ng-show="myForm.phc.$error.required">Mention per head charge.</span>
   </span></p>
     </label>
@@ -60,7 +60,7 @@ name="myForm" novalidate>
     <label class="item item-input">
      <i class="icon ion-android-car placeholder-icon"></i>
   <input type="number" name="as" ng-model="as" placeholder="Available Seats" required>
-  <p><span style="color:red" ng-show="myForm.as.$dirty && myForm.as.$invalid ">
+  <p><span style="color:red" class="pad30" ng-show="myForm.as.$dirty && myForm.as.$invalid ">
   <span ng-show="myForm.as.$error.required">No. of seats required.</span>
   </span></p>
     </label>
