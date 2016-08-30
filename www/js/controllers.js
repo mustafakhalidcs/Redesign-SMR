@@ -179,6 +179,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 .controller('SignupCtrl', function($scope) {})
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
+ 
 
 
 

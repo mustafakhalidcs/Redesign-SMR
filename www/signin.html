@@ -1,51 +1,50 @@
 <ion-view view-title="signin" class="bg1 profile">
-   <ion-content class="padding signform " has-bouncing="false" >
-  
-                      <div class="list list-inset transparent pad20 ">
+   <ion-content class="padding signform has-header" has-bouncing="false"  >
+     <div class="list list-inset transparent pad20 " >
           <h3 class="blue text-center">Share my Ride</h3>
-                          <form    
-name="signinForm" novalidate>
-
-               <p>
-    <label class="item item-input">
-     <i class="icon ion-ios-email placeholder-icon"></i>
-  <input type="email" name="email" ng-model="email" placeholder="Enter your email" required>
-        <p>
-  <span style="color:red;" class="pad30" ng-show="signinForm.email.$dirty && signinForm.email.$invalid ">
-
-  <span ng-show="signinForm.email.$error.required">email is required.</span>
-  </span></p>
-    </label>
-</p>
-               <p>
-    <label class="item item-input" >
-     <i class="icon ion-ios-locked placeholder-icon"></i>
-  <input type="password" name="password" ng-model="password" placeholder="Enter Password" required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="signinForm.password.$dirty && signinForm.password.$invalid ">
-  <span ng-show="signinForm.password.$error.required">Password is required.</span>
-  </span></p>
-    </label>
-</p>
-
-</p>
-                         
-   
-                              <div class="row" >
-                                  <div class="col-10">
-                                       
-                                      </div>
-                                <div class="col-90">  
-                                    <button class="button  button-small button-block buttondr bluebtn"  type="submit" ng-disabled="signinForm.email.$dirty && signinForm.email.$invalid ||
-  signinForm.password.$dirty && signinForm.password.$invalid ">
-  Login
-</button>
-                                  </div>
-</div>
+     <form name="signinForm" novalidate="" ng-submit="signIn(signinForm)"> 
+       <p>
+       <label class="item item-input"  ng-class="{ 'has-errors' : signinForm.email.$invalid && signinForm.email.$touched,'no-errors' : signinForm.email.$valid} " >
+<i class="icon ion-ios-email placeholder-icon"></i>
+ <input type="email" name="email" ng-model="signin.email"  placeholder="Enter Email" required>
+       </label>
+       <div class="error-container" ng-show="signinForm.email.$error" ng-messages="signinForm.email.$error" ng-if="signinForm.email.$touched">
+        <div ng-messages-include="error-list.html"></div>
+       </div>
+      </p>
+             
+      <label class="item item-input" ng-class="{ 'has-errors' : signinForm.password.$invalid && signinnForm.$submitted, 'no-errors' : signinForm.password.$valid  && signinForm.$submitted}">
+        <i class="icon ion-ios-locked placeholder-icon"></i>
+        <input type="password" name="password" ng-model="signin.password" placeholder="Enter Password" ng-minlength="8" ng-maxlength="16" required>
+       </label>
+        <div class="error-container last-error-container" ng-show="signinForm.password.$error && signinForm.$submitted" ng-messages="signinForm.password.$error">
+         <div ng-messages-include="error-list.html"></div> 
+         </div>          
+ 
+          <button class="button  button-full button-block buttondr bluebtn" type="submit">
+            Login
+          </button>
+             
+        </form>   
+              
                         <a href="#signup" style="text-decoration:none;"> <h5 class="text-center"> Not a member? Sign Up </h5></a>
 
 
-</form>
+
             </div>
  </ion-content>
 </ion-view>
+<script id="error-list.html" type="text/ng-template">  
+    <div class="error" ng-message="required">
+      <i class="ion-information-circled"></i> 
+      This field is required!
+    </div>
+    <div class="error" ng-message="minlength">
+      <i class="ion-information-circled"></i> 
+      Minimum length is 5 characters!
+    </div>
+    <div class="error" ng-message="maxlength">
+      <i class="ion-information-circled"></i> 
+      Maximum length is 20 characters!
+    </div>
+  </script>  
