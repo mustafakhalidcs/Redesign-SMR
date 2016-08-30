@@ -1,111 +1,105 @@
-
 <ion-view view-title="signup" class="bg1 profile">
-     <ion-content class="padding signform " has-bouncing="false" scrollbar-y="true" >
-                 <div class="list list-inset  pad2 transparent">
-          <h3 class="blue text-center">Share my Ride</h3>
-                          <form    
-name="signupForm" novalidate>
-                        <p>                        
-    <label class="item item-input">
-     <i class="icon ion-ios-person placeholder-icon"></i>
-  <input type="text" name="fn" ng-model="fn" placeholder="First Name" required>
-      <p>
-  <span style="color:red" class="pad30" ng-show="signupForm.fn.$dirty && signupForm.fn.$invalid ">
+    <ion-content class="padding signform " has-bouncing="false" scrollbar-y="true">
+        <div class="list list-inset  pad2 transparent">
+            <h3 class="blue text-center">Share my Ride</h3>
+            <form name="signupForm" novalidate ng-submit="createUser();">
+                <p>
+                    <label class="item item-input">
+                        <i class="icon ion-ios-person placeholder-icon"></i>
+                        <input type="text" name="fname" ng-model="fname" placeholder="First Name" required>
+                        <p>
+                            <span style="color:red" class="pad30" ng-show="signupForm.fn.$dirty && signupForm.fname.$invalid ">
 
-  <span ng-show="signupForm.fn.$error.required">Name is required.</span>
-  </span>
-          </p> 
-    </label>
-                              </p>
+                            <span ng-show="signupForm.fname.$error.required">Name is required.</span>
+                            </span>
+                        </p>
+                    </label>
+                </p>
+                <p>
+                    <label class="item item-input">
+                        <i class="icon ion-ios-person placeholder-icon"></i>
+                        <input type="text" name="ln" ng-model="lname" placeholder="Last Name" required>
+                        <p>
+                            <span style="color:red" class="pad30" ng-show="signupForm.ln.$dirty && signupForm.lname.$invalid ">
 
-                              <p>
-                                   
-    <label class="item item-input">
-     <i class="icon ion-ios-person placeholder-icon"></i>
-  <input type="text" name="ln" ng-model="ln" placeholder="Last Name" required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="signupForm.ln.$dirty && signupForm.ln.$invalid ">
+                            <span ng-show="signupForm.lname.$error.required">Name is required.</span>
+                            </span>
+                        </p>
+                    </label>
+                </p>
+                <p>
+                    <label class="item item-input">
+                        <i class="icon ion-android-phone-portrait placeholder-icon"></i>
+                        <input type="text" name="mobileno" ng-model="mobile" placeholder="Mobile No." required>
+                        <p>
+                            <span style="color:red" class="pad30" ng-show="signupForm.mobileno.$dirty && signupForm.mobile.$invalid ">
 
-  <span ng-show="signupForm.ln.$error.required">Name is required.</span>
-  </span></p>
-    </label>
-                              </p>
-                                   <p>
-    <label class="item item-input">
-     <i class="icon ion-android-phone-portrait placeholder-icon"></i>
-  <input type="text" name="mobileno" ng-model="mobileno" placeholder="Mobile No." required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="signupForm.mobileno.$dirty && signupForm.mobileno.$invalid ">
+                            <span ng-show="signupForm.mobile.$error.required">Provide mobile no.</span>
+                            </span>
+                        </p>
+                    </label>
+                </p>
+                <p>
+                    <label class="item item-input">
+                        <i class="icon ion-ios-location placeholder-icon"></i>
+                        <input type="text" name="resident_of" ng-model="resident_of" placeholder="Resident Of" required>
+                        <p>
+                            <span style="color:red" class="pad30" ng-show="signupForm.residentof.$dirty && signupForm.resident_of.$invalid ">
 
-  <span ng-show="signupForm.mobileno.$error.required">Provide mobile no.</span>
-  </span></p>
-    </label>
-</p>
-                              
-                                   <p>
-    <label class="item item-input">
-     <i class="icon ion-ios-location placeholder-icon"></i>
-  <input type="text" name="residentof" ng-model="residentof" placeholder="Resident Of" required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="signupForm.residentof.$dirty && signupForm.residentof.$invalid ">
-
-  <span ng-show="signupForm.residentof.$error.required">Fill the above field.</span>
-  </span></p>
-    </label>
-</p>
-
-               <p>
-    <label class="item item-input">
-     <i class="icon ion-ios-email placeholder-icon"></i>
-  <input type="email" name="email" ng-model="email" placeholder="Enter your email" required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="signupForm.email.$dirty && signupForm.email.$invalid ">
+  <span ng-show="signupForm.resident_of.$error.required">Fill the above field.</span>
+                            </span>
+                        </p>
+                    </label>
+                </p>
+                <p>
+                    <label class="item item-input">
+                        <i class="icon ion-ios-email placeholder-icon"></i>
+                        <input type="email" name="email" ng-model="email" placeholder="Enter your email" required>
+                        <p>
+                            <span style="color:red" class="pad30" ng-show="signupForm.email.$dirty && signupForm.email.$invalid ">
 
   <span ng-show="signupForm.email.$error.required">email is required.</span>
-  </span></p>
-    </label>
-</p>
-               <p>
-    <label class="item item-input" >
-     <i class="icon ion-ios-locked placeholder-icon"></i>
-  <input type="password" name="password" ng-model="password" placeholder="Enter Password" required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="signupForm.password.$dirty && signupForm.password.$invalid ">
+                            </span>
+                        </p>
+                    </label>
+                </p>
+                <p>
+                    <label class="item item-input">
+                        <i class="icon ion-ios-locked placeholder-icon"></i>
+                        <input type="password" name="password" ng-model="password" placeholder="Enter Password" required>
+                        <p>
+                            <span style="color:red" class="pad30" ng-show="signupForm.password.$dirty && signupForm.password.$invalid ">
   <span ng-show="signupForm.password.$error.required">Password is required.</span>
-  </span></p>
-    </label>
-</p>
-                              
-                              
-                                   <p>
-    <label class="item item-input">
-     <i class="icon ion-android-create placeholder-icon"></i>
-  <input type="text" name="cnic" ng-model="cnic" placeholder="Enter CNIC No." required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="signupForm.cnic.$dirty && signupForm.cnic.$invalid ">
+                            </span>
+                        </p>
+                    </label>
+                </p>
+                <p>
+                    <label class="item item-input">
+                        <i class="icon ion-android-create placeholder-icon"></i>
+                        <input type="text" name="cnic" ng-model="nic" placeholder="Enter CNIC No." required>
+                        <p>
+                            <span style="color:red" class="pad30" ng-show="signupForm.cnic.$dirty && signupForm.nic.$invalid ">
 
-  <span ng-show="signupForm.cnic.$error.required">Provide your cnic no.</span>
-  </span></p>
-    </label>
-</p>
-
-</p>
-                         
-   <div class="row">
-       <div class="col-offset-10 col-90">
-                               <button class="button  button-small button-block buttondr bluebtn"  type="submit" ng-disabled="signupForm.fn.$dirty && signupForm.fn.$invalid ||
+  <span ng-show="signupForm.nic.$error.required">Provide your cnic no.</span>
+                            </span>
+                        </p>
+                    </label>
+                </p>
+                </p>
+                <div class="row">
+                    <div class="col-offset-10 col-90">
+                        <button class="button  button-small button-block buttondr bluebtn" type="submit" ng-disabled="signupForm.fn.$dirty && signupForm.fn.$invalid ||
   signupForm.ln.$dirty && signupForm.ln.$invalid ||signupForm.mobileno.$dirty && signupForm.mobileno.$invalid || signupForm.residentof.$dirty && signupForm.residentof.$invalid || signupForm.email.$dirty && signupForm.email.$invalid || signupForm.password.$dirty && signupForm.password.$invalid || signupForm.cnic.$dirty && signupForm.cnic.$invalid">
-  SignUp
-</button>
-       </div>
-       </div>
-                                 
-
-</form>
-            </div>
-<!--
+                            SignUp
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--
       </ion-item>
          </ion-list>
 -->
- </ion-content>
+    </ion-content>
 </ion-view>
