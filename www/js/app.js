@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-    angular.module('starter', ['ionic', 'starter.controllers'])
+    angular.module('starter', ['ionic', 'starter.controllers','ngMessages'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -51,7 +51,7 @@
         'menuContent': {
           templateUrl: 'notif.html',
             controller: 'NotifCtrl'
-//<<<<<<< HEAD
+
         }
       }
     })
@@ -61,8 +61,7 @@
         'menuContent': {
           templateUrl: 'uptours.html',
             controller: 'UptoursCtrl'
-//=======
-//>>>>>>> origin/master
+
         }
       }
     })
@@ -75,22 +74,22 @@
         }
       }
     })
-   .state('profile', {
-    url: '/profile',
-    templateUrl: 'profile.html',
-      controller: 'ProfileCtrl'
+    .state('app.signin', {
+      url: '/signin',
+      views: {
+        'menuContent': {
+          templateUrl: 'signin.html',
+          controller: 'signin'
+        }
+      }
+    })
+   .state('signup', {
+    url: '/signup',
+    templateUrl: 'signup.html',
+      controller: 'SignupCtrl'
   })
 
-//  .state('app.brow', {
-//      url: '/brow',
-//      views: {
-//        'menuContent': {
-//          templateUrl: 'brow.html',
-//            controller: 'BrowCtrl'
-//         
-//        }
-//      }
-//    })
+
   .state('app.single', {
     url: '/profile/:profileId',
     views: {
@@ -107,3 +106,4 @@
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
 });
+ 

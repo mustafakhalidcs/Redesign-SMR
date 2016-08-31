@@ -49,6 +49,12 @@
 .pad20{
       padding:20px;
 }
+.pad30{
+    padding-left:30px;
+}
+.pad2{
+    padding:0px 20px;
+}
 .pad10{
     padding:10px 0px;
 }
@@ -247,57 +253,107 @@ h2{
     background:#489ab3;
     padding-top:30px;
 }
-.dform label{
+/*
+.dform label, .signform label{
     background:transparent;
     border:0px;
 }
-.dform input::-webkit-input-placeholder {
+
+*/
+/*
+.signform label{
+    background:transparent;
+    border:0px;
+}
+*/
+.dform input::-webkit-input-placeholder  {
 /* color:    white;*/
     color:grey;
+    padding-left:10px;
 }
-.dform .icon{
+.signform input::-webkit-input-placeholder{
+    color:#004965;
+    padding-left:10px;
+}
+.dform .icon , .signform .icon{
    color:#004965;
 }
-.dform input::-moz-placeholder {
+.dform input::-moz-placeholder ,.signform input::-moz-placeholder {
 /*    color:white;*/
      color:grey;
+    padding-left:10px;
 }
-.dform input::-moz-placeholder {
-/*    color:white;   */
-     color:grey;
-}
-.dform .cancel{
+
+.dform .cancel {
      white-space:nowrap;
      color:#119696;
     font-weight:bold;
 }
-.dform .post{
+.dform .post {
      color:#155877;
      white-space:nowrap;
     font-weight:bold;
 }
+/*
+label.ng-invalid {
+    border:1px solid grey;
+    box-shadow:inset 1px 1px 2px 0 #BECDD2;
+    transition: box-shadow 0.3s;
+}
+*/
+/*
 input.ng-invalid {
     border:1px solid grey;
+    box-shadow:inset 1px 1px 2px 0 #BECDD2;
+    transition: box-shadow 0.3s;
 }
 input.ng-valid {
     border:1px solid #092;
+    box-shadow:inset 1px 1px 2px 0 #BECDD2;
+    transition: box-shadow 0.3s;
 }
-/*
-input.ng-invalid input.ng-dirty{
-   background:#FA787E;
-}
+*/
 
-input.ng-valid input.ng-dirty{
- background:#78FA89;
+
+.error-container {
+  margin: 5px 0;
 }
-*/
-/*
-input.ng-pristine {
-    background-color:lightblue;
+ 
+.error-container:last-child {
+    margin: 5px 0 0;
 }
-*/
-/*
-input.ng-dirty {
-    background-color:pink;
+ 
+.error {
+  padding: 10px 16px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 11px;
+  text-transform:capitalize;
+  color: #555;
+  vertical-align: middle;
 }
-*/
+ 
+.error i {
+  font-size: 20px;
+  color: #B83E2C;  
+  vertical-align: middle;
+}
+ 
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+ 
+.has-errors {
+/*  border-bottom: 3px solid #B83E2C;*/
+    border: 1px solid #B83E2C !important;
+}
+ 
+.no-errors {
+/*  border-bottom: 3px solid green;*/
+     border: 1px solid green !important;
+}
+.signform .item{
+    background:transparent;
+    border:1px solid grey;
+    box-shadow:inset 1px 1px 2px 0 #BECDD2;
+    transition: box-shadow 0.3s;
+}

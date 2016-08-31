@@ -1,10 +1,108 @@
-<ion-view view-title="Chat">
-  <ion-content >
- 
-  </ion-content>
-  
+<ion-view view-title="signup" class="bg1 profile">
+     <ion-content class="padding signform " has-bouncing="false" scrollbar-y="true" >
+                 <div class="list list-inset  pad2 transparent">
+          <h3 class="blue text-center">Share my Ride</h3>
+                          <form    
+name="signupForm" novalidate>
+                        <p>                        
+    <label class="item item-input">
+     <i class="icon ion-ios-person placeholder-icon"></i>
+  <input type="text" name="first_name" ng-model="first_name" placeholder="First Name" required>
+      <p>
+  <span style="color:red" class="pad30" ng-show="signupForm.first_name.$dirty && signupForm.first_name.$invalid ">
 
+  <span ng-show="signupForm.first_name.$error.required">Name is required.</span>
+  </span>
+          </p> 
+    </label>
+                              </p>
 
+                              <p>
+                                   
+    <label class="item item-input">
+     <i class="icon ion-ios-person placeholder-icon"></i>
+  <input type="text" name="last_name" ng-model="ln" placeholder="Last Name" required>
+        <p>
+  <span style="color:red" class="pad30" ng-show="signupForm.last_name.$dirty && signupForm.last_name.$invalid ">
 
+  <span ng-show="signupForm.last_name.$error.required">Name is required.</span>
+  </span></p>
+    </label>
+                              </p>
+                                   <p>
+    <label class="item item-input">
+     <i class="icon ion-android-phone-portrait placeholder-icon"></i>
+  <input type="tel" name="mobile" id="mobile"  ng-model="mobileno" placeholder="Mobile No." required>
+        <p>
+  <span style="color:red" class="pad30" ng-show="signupForm.mobile.$dirty && signupForm.mobile.$invalid ">
+
+  <span ng-show="signupForm.mobile.$error.required">Provide mobile no.</span>
+  </span></p>
+    </label>
+</p>
+                              
+                                   <p>
+    <label class="item item-input">
+     <i class="icon ion-ios-location placeholder-icon"></i>
+  <input type="text" name="resident_of" ng-model="residentof" placeholder="Resident Of" required>
+        <p>
+  <span style="color:red" class="pad30" ng-show="signupForm.resident_of.$dirty && signupForm.resident_of.$invalid ">
+
+  <span ng-show="signupForm.resident_of.$error.required">Fill the above field.</span>
+  </span></p>
+    </label>
+</p>
+
+               <p>
+    <label class="item item-input">
+     <i class="icon ion-ios-email placeholder-icon"></i>
+  <input type="email" name="email" ng-model="email" placeholder="Enter your email" required>
+        <p>
+  <span style="color:red" class="pad30" ng-show="signupForm.email.$dirty && signupForm.email.$invalid ">
+
+  <span ng-show="signupForm.email.$error.required">email is required.</span>
+  </span></p>
+    </label>
+</p>
+               <p>
+    <label class="item item-input" >
+     <i class="icon ion-ios-locked placeholder-icon"></i>
+  <input type="password" name="password" ng-model="password" placeholder="Enter Password" required>
+        <p>
+  <span style="color:red" class="pad30" ng-show="signupForm.password.$dirty && signupForm.password.$invalid ">
+  <span ng-show="signupForm.password.$error.required">Password is required.</span>
+  </span></p>
+    </label>
+</p>
+                              
+                              
+                                   <p>
+    <label class="item item-input">
+     <i class="icon ion-android-create placeholder-icon"></i>
+  <input type="text" name="NIC" pattern="\d+" max="13" size="13" maxlength="13" ng-model="NIC" placeholder="Enter CNIC No." required>
+        <p>
+  <span style="color:red" class="pad30" ng-show="signupForm.NIC.$dirty && signupForm.NIC.$invalid ">
+
+  <span ng-show="signupForm.NIC.$error.required">Provide your cnic no.</span>
+  </span></p>
+    </label>
+</p>
+
+</p>
+                         
+   <div class="row">
+       <div class="col-offset-10 col-90">
+                               <button class="button  button-small button-block buttondr bluebtn"  type="submit" ng-disabled="signupForm.fn.$dirty && signupForm.fn.$invalid ||
+  signupForm.ln.$dirty && signupForm.ln.$invalid ||signupForm.mobileno.$dirty && signupForm.mobileno.$invalid || signupForm.residentof.$dirty && signupForm.residentof.$invalid || signupForm.email.$dirty && signupForm.email.$invalid || signupForm.password.$dirty && signupForm.password.$invalid || signupForm.cnic.$dirty && signupForm.cnic.$invalid">
+  SignUp
+</button>
+       </div>
+       </div>
+                                 
+
+</form>
+            </div>
+      </ion-item>
+         </ion-list>
+ </ion-content>
 </ion-view>
- 
