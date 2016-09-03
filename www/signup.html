@@ -41,7 +41,7 @@
                         <input type="text" name="resident_of" ng-model="signup.resident_of" ng-minlength="5" maxlength="20" placeholder="Resident Of" required>
                     </label>
                     <div class="error-container" ng-show="signupForm.resident_of.$error" ng-messages="signupForm.resident_of.$error" ng-if="signupForm.resident_of.$invalid && !signupForm.resident_of.$pristine">
-                        <!--              <div ng-messages-include="error-list.html"></div>-->
+                      
                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter at least 8 characters.</p>
                         <p class="error" ng-message="required"><i class="ion-information-circled"></i> This field is required.</p>
                     </div>
@@ -85,7 +85,4 @@
         </div>
     </ion-content>
 </ion-view>
-<!--
 
-last-error-container
--->
