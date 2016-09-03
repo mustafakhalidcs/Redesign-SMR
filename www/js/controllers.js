@@ -192,7 +192,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             $http({
           method: 'POST',
           data: $.param(
-            { 
+            {  
             'email': $scope.signin.email,
             'password': $scope.signin.password,
             "command":"loginRequest"
@@ -201,16 +201,36 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
           headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
                     },
-          url: "http://localhost:8080/ShareMyRide/signup.php"
+          url: "http://localhost:8080/ShareMyRide/login.php"
           }).success(function(data,status,headers,config){
-            SweetAlert.swal("","Credential matched","success");
-            $state.go('app.home');
+            console.log(status);
+            if(angular.equals(data , "true")){
+                SweetAlert.swal("","Successfull log in","success");
+                $state.go('app.home');
+            }
+            else{
+                SweetAlert.swal({
+
+                title: "Credentials mismatch!",
+                text: "Do you want to create a new account?",
+                type: "error",
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+                closeOnConfirm: true,
+                closeOnCancel: true
+                }, function() {
+                   // $state.go('signup');
+                });
+            }
           });
         }
     })
 .controller('SignupCtrl', function($scope , $http ,SweetAlert) {
   $scope.signup = {};
-  $scope.signUp = function() {
+  $scope.signUp = function() { 
     $http({
           method: 'POST',
           data: $.param(
@@ -230,7 +250,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                     },
           url: "http://localhost:8080/ShareMyRide/signup.php"
           }).success(function(data,status,headers,config){
-            SweetAlert.swal("",$scope.signup.first_name," Your acount has been created","success");
+            SweetAlert.swal("",$scope.signup.first_name+" Your acount has been created","success");
             console.log('Data posted');
           });
   }
