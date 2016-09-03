@@ -4,71 +4,126 @@
         <ion-content class="padding dform " has-bouncing="false" >
   
                       <div class="list list-inset white pad20 ">
+                          
           <h3 class="blue">Fill Form</h3>
-                          <form    
-name="myForm" novalidate>
+                              
+      <form name="driverForm" novalidate="" ng-submit="driverform(driverForm.$valid)">
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.destination.$invalid && !driverForm.destination.$pristine,'no-errors' : driverForm.destination.$valid} ">
+                        <i class="icon ion-arrow-graph-up-right placeholder-icon"></i>
+                        <input type="text" name="destination" ng-model="driver.destination" ng-minlength="5" ng-maxlength="20" placeholder="Destination" required>
+                    </label>
+                    <div class="error-container" ng-show="driverForm.destination.$error" ng-messages="driverForm.destination.$error" ng-if="driverForm.destination.$invalid  && !driverForm.destination.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter full destination.</p>
+                      
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your destination is required.</p>
+                    </div>
+                </p>
+                          
+                 <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.current_location.$invalid && !driverForm.current_location.$pristine,'no-errors' : driverForm.current_location.$valid} ">
+                        <i class="icon ion-location placeholder-icon"></i>
+                        <input type="text" name="current_location" ng-model="driver.current_location" ng-minlength="5" ng-maxlength="20" placeholder="Current Location" required>
+                    </label>
+                    <div class="error-container" ng-show="driverForm.current_location.$error" ng-messages="driverForm.current_location.$error" ng-if="driverForm.current_location.$invalid  && !driverForm.current_location.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter full current location.</p>
+                       
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Current location is required.</p>
+                    </div>
+          </p>
+            
+                 <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.route.$invalid && !driverForm.route.$pristine,'no-errors' : driverForm.route.$valid} ">
+                        <i class="icon ion-map placeholder-icon"></i>
+                        <input type="text" name="route" ng-model="driver.route" ng-minlength="5" ng-maxlength="20" placeholder="Route" required>
+                    </label>
+                    <div class="error-container" ng-show="driverForm.route.$error" ng-messages="driverForm.route.$error" ng-if="driverForm.route.$invalid  && !driverForm.route.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Route is too short.</p>
+                      
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Route is required.</p>
+                    </div>
+                </p>
+                <p>
+                    
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.date.$invalid && !driverForm.date.$pristine,'no-errors' : driverForm.date.$valid} ">
+                        <i class="icon ion-android-calendar placeholder-icon"></i>
+                        <input type="date" name="date" ng-model="driver.date" ng-minlength="5" ng-maxlength="20" placeholder="Date" required>
+                    </label>
+                    <div class="error-container" ng-show="driverForm.date.$error" ng-messages="driverForm.date.$error" ng-if="driverForm.date.$invalid  && !driverForm.date.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your name is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Date is required.</p>
+                    </div>
+                </p>
+                <p>
+                    
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.time.$invalid && !driverForm.time.$pristine,'no-errors' : driverForm.time.$valid} ">
+                        <i class="icon ion-ios-time placeholder-icon"></i>
+                        <input type="time" name="time" ng-model="driver.time" ng-minlength="5" ng-maxlength="20" placeholder="Time" required>
+                    </label>
+                    <div class="error-container" ng-show="driverForm.time.$error" ng-messages="driverForm.time.$error" ng-if="driverForm.time.$invalid  && !driverForm.time.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your name is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Time is required.</p>
+                    </div>
+                </p>
+
+                     
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.per_head_charge.$invalid && !driverForm.per_head_charge.$pristine,'no-errors' : driverForm.per_head_charge.$valid} ">
+                        <i class="icon ion-ios-people placeholder-icon"></i>
+                        <input type="text" name="per_head_charge" ng-model="driver.per_head_charge" ng-minlength="5" ng-maxlength="20" placeholder="Per head charge" required>
+                    </label>
+                    <div class="error-container" ng-show="driverForm.per_head_charge.$error" ng-messages="driverForm.per_head_charge.$error" ng-if="driverForm.per_head_charge.$invalid  && !driverForm.per_head_charge.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Entered at least 2 digits.</p>
+                       
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Per head Charge is required.</p>
+                    </div>
+                </p>
+
+                     
+                <p>
+
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.available_seats.$invalid && !driverForm.available_seats.$pristine,'no-errors' : driverForm.available_seats.$valid} ">
+                        <i class="icon ion-person-stalker placeholder-icon"></i>
+                        <input type="text" name="available_seats" ng-model="driver.available_seats" ng-minlength="5" ng-maxlength="20" placeholder="Available seats" required>
+                    </label>
+                    <div class="error-container" ng-show="driverForm.available_seats.$error" ng-messages="driverForm.available_seats.$error" ng-if="driverForm.available_seats.$invalid  && !driverForm.available_seats.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your name is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your name is required.</p>
+                    </div>
+                </p>
+
+                 <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.vehicle_type.$invalid && !driverForm.vehicle_type.$pristine,'no-errors' : driverForm.vehicle_type.$valid} ">
+                        <i class="icon ion-android-car placeholder-icon"></i>
+                        <input type="text" name="vehicle_type" ng-model="driver.vehicle_type" ng-minlength="5" ng-maxlength="20" placeholder="Vehicle type" required>
+                    </label>
+
+                    <div class="error-container" ng-show="driverForm.vehicle_type.$error" ng-messages="driverForm.vehicle_type.$error" ng-if="driverForm.vehicle_type.$invalid  && !driverForm.vehicle_type.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your name is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your name is required.</p>
+                    </div>
+                </p>
 
                <p>
-    <label class="item item-input">
-     <i class="icon ion-location placeholder-icon"></i>
-  <input type="text" name="location" ng-model="location" placeholder="Current Location" required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="myForm.location.$dirty && myForm.location.$invalid ">
-
-  <span ng-show="myForm.location.$error.required">Location is required.</span>
-  </span></p>
-    </label>
-</p>
-               <p>
-    <label class="item item-input">
-     <i class="icon ion-arrow-graph-up-right placeholder-icon"></i>
-  <input type="text" name="destination" ng-model="destination" placeholder="destination" required>
-        <p>
-  <span style="color:red" class="pad30" ng-show="myForm.destination.$dirty && myForm.destination.$invalid ">
-  <span ng-show="myForm.destination.$error.required">Destination is required.</span>
-  </span></p>
-    </label>
-</p>
-               <p>
-    <label class="item item-input">
-     <i class="icon ion-map placeholder-icon"></i>
-  <input type="text" name="map" ng-model="map" placeholder="Route" required>
-  <p><span style="color:red" class="pad30" ng-show="myForm.map.$dirty && myForm.map.$invalid ">
-  <span ng-show="myForm.map.$error.required">Provide the route.</span>
-  </span></p>
-    </label>
-</p>
-               <p>
-    <label class="item item-input">
-     <i class="icon ion-android-calendar placeholder-icon"></i>
-  <input type="date" name="date" ng-model="date" placeholder="Date" required>
-  <p><span style="color:red" class="pad30" ng-show="myForm.date.$dirty && myForm.date.$invalid ">
-  <span ng-show="myForm.date.$error.required">Mention the date.</span>
-  </span></p>
-    </label>
-</p>
-               <p>
-    <label class="item item-input">
-     <i class="icon ion-ios-people placeholder-icon"></i>
-  <input type="number" name="phc" ng-model="phc" placeholder="Per head charge" required>
-  <p><span style="color:red" class="pad30" ng-show="myForm.phc.$dirty && myForm.phc.$invalid ">
-  <span ng-show="myForm.phc.$error.required">Mention per head charge.</span>
-  </span></p>
-    </label>
-</p>
-               <p>
-    <label class="item item-input">
-     <i class="icon ion-android-car placeholder-icon"></i>
-  <input type="number" name="as" ng-model="as" placeholder="Available Seats" required>
-  <p><span style="color:red" class="pad30" ng-show="myForm.as.$dirty && myForm.as.$invalid ">
-  <span ng-show="myForm.as.$error.required">No. of seats required.</span>
-  </span></p>
-    </label>
-</p>
-                              <div class="row" >
+                    <label class="item item-input" ng-class="{ 'has-errors' : driverForm.vehicle_color.$invalid && !driverForm.vehicle_color.$pristine,'no-errors' : driverForm.vehicle_color.$valid} ">
+                        <i class="icon ion-android-color-palette placeholder-icon"></i>
+                        <input type="text" name="vehicle_color" ng-model="driver.vehicle_color" ng-minlength="5" ng-maxlength="20" placeholder="Vehicle color" required>
+                    </label>
+                    <div class="error-container" ng-show="driverForm.vehicle_color.$error" ng-messages="driverForm.vehicle_color.$error" ng-if="driverForm.vehicle_color.$invalid  && !driverForm.vehicle_color.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your name is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your name is required.</p>
+                    </div>
+                </p>
+                <div class="row" >
                                   <div class="col-50">
-                                       <button class="button  button-small button-block buttondr bluebtn"  type="submit" ng-disabled="myForm.location.$dirty && myForm.location.$invalid ||
-  myForm.destination.$dirty && myForm.destination.$invalid ||myForm.route.$dirty && myForm.route.$invalid || myForm.date.$dirty && myForm.date.$invalid || myForm.phc.$dirty && myForm.phc.$invalid || myForm.as.$dirty && myForm.as.$invalid">
+                                       <button class="button  button-small button-block buttondr bluebtn"  type="submit" ng-disabled="driverForm.$invalid">
   Post
 </button>
                                       </div>
@@ -79,7 +134,9 @@ name="myForm" novalidate>
 </div>
 
 
-</form>
+</form> 
+
+
             </div>
  </ion-content>
 </ion-modal-view>
