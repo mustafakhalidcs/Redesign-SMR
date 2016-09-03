@@ -1,62 +1,39 @@
 <ion-view view-title="signin" class="bg1 profile">
-   <ion-content scrollbar-y="true" has-bouncing="false" >       
-<!--
-     <ion-list >
-         
-      <ion-item  type="item-text-wrap" class="transparent no-border pad0" >
-          <div class="card">
-               <img src="img/76.jpg" class="full-image" />
-                  <div class="item profileitem" height="200" >
-                        <div class="row pad0" >
-                        <div class="col col-35 ul1">
-                           <div class="item item-thumbnail-left item-text-wrap transparent pad0"   menu-close >
-                                    <img  src="img/a3.png">
-                          </div>
-                        </div>
-                        <div class="col col-45 col-center">  
-                              <h2 style="color:#fff;text-transform:capitalize; word-wrap:break-word;">Anmol</h2>
-                            <p >Car Colour</p> 
-                               <p >Car Model</p> 
-                                <p >Car Number</p> 
-                        </div>
-                        <div class="col col-20 col-center">
-                              <div class="circle-text"><div><h3 style="padding-top:40%;">17</h3><h3 style="padding-top:3%;"> am</h3></div></div>
-                        </div>
-                       </div>  
-                       <div class="row">
-                          <div class="col col-100">
-                          <h3 style="color:#fff; word-wrap:break-word;">0315-1234567</h3>
-                               <p >anmolhoney2010@gmail.com</p></div>
-                       </div>
-                  </div>
-              <div class="item text-right profilediv">
-              <p class="blue"> <span >current location</span>Mianwali</p> 
-              </div>
-              
-              <div class="item text-right profilediv" >
-                 <p class="blue"><span style="float:left;color:#fff;">Destination</span>Lahore</p> 
-              </div>
-              
-              <div class="item text-right profilediv">
-                <p class="blue"> <span style="float:left;color:#fff;">Route</span>G.T Road</p> 
-              </div>
-              <div class="item text-right profilediv">
-                <p class="blue"> <span style="float:left;color:#fff;">per head charge</span>100</p> 
-              </div>
-                  <div class="item text-right profilediv">
-                  <p class="blue"><span style="float:left; color:#fff;">Available Seats</span>4</p> 
-                  </div>
-                <button class="button button-block joinbtn" onclick="swal({   
-title: 'Sent',
-            text: 'Your request has been sent',
-            timer: 1100,
-          type:'success',
-            showConfirmButton: false });" > 
-                 Join
+    <ion-content class="padding signform has-header" has-bouncing="false">
+        <div class="list list-inset transparent pad20 ">
+            <h3 class="blue text-center">Share my Ride</h3>
+            <form name="signinForm" novalidate="" ng-submit="signIn(signinForm.$valid)">
+                 <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signinForm.email.$invalid && !signinForm.email.$pristine,'no-errors' : signinForm.email.$valid} ">
+                        <i class="icon ion-ios-email placeholder-icon"></i>
+                        <input type="email" name="email" ng-model="signin.email" placeholder="Enter Email" ng-minlength="13" maxlength="30" required>
+                    </label>
+                    <div class="error-container" ng-show="signinForm.email.$error" ng-messages="signinForm.email.$error" ng-if="signinForm.email.$invalid && !signinForm.email.$pristine">
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your email address is required.</p>
+                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter valid email address.</p>
+                 
+                    </div>
+                </p>
+            
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signinForm.password.$invalid && !signinForm.password.$pristine , 'no-errors' : signinForm.password.$valid}">
+                        <i class="icon ion-ios-locked placeholder-icon"></i>
+                        <input type="password" name="password" ng-model="signin.password" placeholder="Enter Password" ng-minlength="5" ng-maxlength="20" required>
+                    </label>
+                    <div class="error-container " ng-show="signinForm.password.$error " ng-messages="signinForm.password.$error" ng-if="signinForm.password.$invalid && !signinForm.password.$pristine">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Password is too short</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Password is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Password is required.</p>
+                    </div>
+                </p>
+
+
+                <button class="button  button-full button-block buttondr bluebtn" type="submit" ng-disabled="signinForm.$invalid">
+                    Login
                 </button>
-              </div>
-           </ion-item>
-         </ion-list> 
--->
-        </ion-content>
+            </form>
+            <a href="#signup" style="text-decoration:none;">
+                <h5 class="text-center"> Not a member? Sign Up </h5></a>
+        </div>
+    </ion-content>
 </ion-view>
