@@ -186,10 +186,11 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 })
 
-.controller('signin', function($scope , $http , SweetAlert ,$state) {
+.controller('signin', function($scope , $http , SweetAlert ,$state , $rootScope) {
         $scope.signin = {};
+        $rootScope.loggedin = false;
         $scope.signIn = function() {
-            $http({
+        $http({
           method: 'POST',
           data: $.param(
             {  
@@ -203,7 +204,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                     },
           url: "http://localhost:8080/ShareMyRide/login.php"
           }).success(function(data,status,headers,config){
-            console.log(status);
+            console.log(data);
             if(angular.equals(data , "true")){
                 SweetAlert.swal("","Successfull log in","success");
                 $state.go('app.home');
