@@ -6,7 +6,7 @@
                 <p>
                     <label class="item item-input" ng-class="{ 'has-errors' : signupForm.first_name.$invalid && !signupForm.first_name.$pristine,'no-errors' : signupForm.first_name.$valid} ">
                         <i class="icon ion-ios-person placeholder-icon"></i>
-                        <input type="text" name="first_name" ng-model="signup.first_name" ng-minlength="5" ng-maxlength="20" placeholder="First Name" required>
+                        <input type="text" name="first_name" ng-model="signup.first_name" ng-minlength="3" ng-maxlength="20" placeholder="First Name" required>
                     </label>
                     <div class="error-container" ng-show="signupForm.first_name.$error" ng-messages="signupForm.first_name.$error" ng-if="signupForm.first_name.$invalid  && !signupForm.first_name.$pristine ">
                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
@@ -17,7 +17,7 @@
                 <p>
                     <label class="item item-input" ng-class="{ 'has-errors' : signupForm.last_name.$invalid  && !signupForm.last_name.$pristine ,'no-errors' : signupForm.last_name.$valid} ">
                         <i class="icon ion-ios-person placeholder-icon"></i>
-                        <input type="text" name="last_name" ng-model="signup.last_name" ng-minlength="5" ng-maxlength="20" placeholder="Last Name" required>
+                        <input type="text" name="last_name" ng-model="signup.last_name" ng-minlength="3" ng-maxlength="20" placeholder="Last Name" required>
                     </label>
                     <div class="error-container" ng-show="signupForm.last_name.$error" ng-messages="signupForm.last_name.$error" ng-if="signupForm.last_name.$invalid && !signupForm.last_name.$pristine">
                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
