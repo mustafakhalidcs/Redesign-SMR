@@ -83,12 +83,20 @@
         }
       }
     })
-   .state('signup', {
+//   .state('signup', {
+//    url: '/signup',
+//    templateUrl: 'signup.html',
+//      controller: 'SignupCtrl'
+//  })
+  .state('app.signup', {
     url: '/signup',
-    templateUrl: 'signup.html',
-      controller: 'SignupCtrl'
+    views: {
+      'menuContent': {
+        templateUrl: 'signup.html',
+        controller: 'SignupCtrl'
+      }
+    }
   })
-
 
   .state('app.single', {
     url: '/profile/:profileId',

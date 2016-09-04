@@ -40,6 +40,14 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             }, 1000);
         };
     })
+
+//.controller('colorCtrl', function($scope) {
+//    $scope.colors = [
+//        { color : "red"},
+//        {color : "white"},
+//        { color : "black"}
+//    ];
+//})
     .controller('demoCtrl', ['SweetAlert', function(SweetAlert) {
         var vm = this;
         vm.alert = function() {
@@ -98,20 +106,28 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         $scope.$on('$destroy', function() {
             $scope.modal.remove();
         });
+    $scope.types = [
+        { type : "Car"},
+        {type : "suzuki"},
+        { type : "bolan suzuki"},
+        { type : "jeep"}
+    ];
+    $scope.date = new Date();
+   
 
         //  $scope.createContact = function(u) {        
         //    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
         //    $scope.modal.hide();
         //  };
-        $scope.images = [
-            { image: "img/a1.png" },
-            { image: "img/a2.png" },
-            { image: "img/a3.png" },
-            { image: "img/a4.png" },
-            { image: "img/a5.png" },
-            { image: "img/dabba.png" }
-        ]
-        $scope.current = 'img/ionic.png';
+//        $scope.images = [
+//            { image: "img/a1.png" },
+//            { image: "img/a2.png" },
+//            { image: "img/a3.png" },
+//            { image: "img/a4.png" },
+//            { image: "img/a5.png" },
+//            { image: "img/dabba.png" }
+//        ]
+//        $scope.current = 'img/ionic.png';
 
     })
     .controller('RiderModalCtrl', function($scope, $ionicModal) {
@@ -131,6 +147,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         $scope.$on('$destroy', function() {
             $scope.modal.remove();
         });
+    $scope.date = new Date();
 
     })
 
