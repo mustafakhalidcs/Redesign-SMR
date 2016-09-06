@@ -65,6 +65,9 @@
     text-transform:capitalize;
     word-wrap:break-word;
 }
+.che{
+    border:0px; padding-top:5px; padding-bottom:5px; display:inline-block;
+}
 .home ion-item , .notif ion-item{
 border:none; padding-top:0px; 
 }

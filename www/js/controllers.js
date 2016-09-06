@@ -10,35 +10,35 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         //});
 
         // Form data for the login modal
-        $scope.loginData = {};
-
-        // Create the login modal that we will use later
-        $ionicModal.fromTemplateUrl('login.html', {
-            scope: $scope
-        }).then(function(modal) {
-            $scope.modal = modal;
-        });
-
-        // Triggered in the login modal to close it
-        $scope.closeLogin = function() {
-            $scope.modal.hide();
-        };
-
-        // Open the login modal
-        $scope.login = function() {
-            $scope.modal.show();
-        };
-
-        // Perform the login action when the user submits the login form
-        $scope.doLogin = function() {
-            console.log('Doing login', $scope.loginData);
-
-            // Simulate a login delay. Remove this and replace with your login
-            // code if using a login system
-            $timeout(function() {
-                $scope.closeLogin();
-            }, 1000);
-        };
+//        $scope.loginData = {};
+//
+//        // Create the login modal that we will use later
+//        $ionicModal.fromTemplateUrl('login.html', {
+//            scope: $scope
+//        }).then(function(modal) {
+//            $scope.modal = modal;
+//        });
+//
+//        // Triggered in the login modal to close it
+//        $scope.closeLogin = function() {
+//            $scope.modal.hide();
+//        };
+//
+//        // Open the login modal
+//        $scope.login = function() {
+//            $scope.modal.show();
+//        };
+//
+//        // Perform the login action when the user submits the login form
+//        $scope.doLogin = function() {
+//            console.log('Doing login', $scope.loginData);
+//
+//            // Simulate a login delay. Remove this and replace with your login
+//            // code if using a login system
+//            $timeout(function() {
+//                $scope.closeLogin();
+//            }, 1000);
+//        };
     })
 
 //.controller('colorCtrl', function($scope) {
@@ -113,6 +113,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         { type : "jeep"}
     ];
     $scope.date = new Date();
+    
    
 
         //  $scope.createContact = function(u) {        
@@ -162,21 +163,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 6 },
         { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 7 }
     ];
-    $ionicModal.fromTemplateUrl('login.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-    }).then(function(modal) {
-        $scope.modal = modal;
-    });
-    $scope.openModal = function() {
-        $scope.modal.show();
-    };
-    $scope.closeModal = function() {
-        $scope.modal.hide();
-    };
-    $scope.$on('$destroy', function() {
-        $scope.modal.remove();
-    });
+   
 
     //  $scope.createContact = function(u) {        
     //    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
