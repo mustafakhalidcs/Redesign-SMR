@@ -1,53 +1,10 @@
 angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout ,$rootScope) {
 
-        // With the new view caching in Ionic, Controllers are only called
-        // when they are recreated or on app start, instead of every page change.
-        // To listen for when this page is active (for example, to refresh data),
-        // listen for the $ionicView.enter event:
-        //$scope.$on('$ionicView.enter', function(e) {
-        //});
+console.log($rootScope.user_id);        
+})
 
-        // Form data for the login modal
-        $scope.loginData = {};
-
-        // Create the login modal that we will use later
-        $ionicModal.fromTemplateUrl('login.html', {
-            scope: $scope
-        }).then(function(modal) {
-            $scope.modal = modal;
-        });
-
-        // Triggered in the login modal to close it
-        $scope.closeLogin = function() {
-            $scope.modal.hide();
-        };
-
-        // Open the login modal
-        $scope.login = function() {
-            $scope.modal.show();
-        };
-
-        // Perform the login action when the user submits the login form
-        $scope.doLogin = function() {
-            console.log('Doing login', $scope.loginData);
-
-            // Simulate a login delay. Remove this and replace with your login
-            // code if using a login system
-            $timeout(function() {
-                $scope.closeLogin();
-            }, 1000);
-        };
-    })
-
-//.controller('colorCtrl', function($scope) {
-//    $scope.colors = [
-//        { color : "red"},
-//        {color : "white"},
-//        { color : "black"}
-//    ];
-//})
     .controller('demoCtrl', ['SweetAlert', function(SweetAlert) {
         var vm = this;
         vm.alert = function() {
@@ -108,61 +65,16 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         });
     $scope.types = [
         { type : "Car"},
-        {type : "suzuki"},
+        { type : "suzuki"},
         { type : "bolan suzuki"},
         { type : "jeep"}
     ];
     $scope.date = new Date();
-   
+})
 
-        //  $scope.createContact = function(u) {        
-        //    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
-        //    $scope.modal.hide();
-        //  };
-//        $scope.images = [
-//            { image: "img/a1.png" },
-//            { image: "img/a2.png" },
-//            { image: "img/a3.png" },
-//            { image: "img/a4.png" },
-//            { image: "img/a5.png" },
-//            { image: "img/dabba.png" }
-//        ]
-//        $scope.current = 'img/ionic.png';
+.controller('RiderModalCtrl', function($scope, $ionicModal) {
 
-    })
-    .controller('RiderModalCtrl', function($scope, $ionicModal) {
-
-        $ionicModal.fromTemplateUrl('riderform.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal;
-        });
-        $scope.openModal = function() {
-            $scope.modal.show();
-        };
-        $scope.closeModal = function() {
-            $scope.modal.hide();
-        };
-        $scope.$on('$destroy', function() {
-            $scope.modal.remove();
-        });
-    $scope.date = new Date();
-
-    })
-
-
-.controller('HomeCtrl', function($scope, $ionicModal) {
-    $scope.items = [
-        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 1 },
-        { name: "anmol irfan", to: "peshawar", from: "karachi", image: "img/76.jpg", date: "23/06/2016", id: 2 },
-        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 3 },
-        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 4 },
-        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 5 },
-        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 6 },
-        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 7 }
-    ];
-    $ionicModal.fromTemplateUrl('login.html', {
+    $ionicModal.fromTemplateUrl('riderform.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
@@ -177,12 +89,24 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
     $scope.$on('$destroy', function() {
         $scope.modal.remove();
     });
+    $scope.date = new Date();
 
-    //  $scope.createContact = function(u) {        
-    //    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
-    //    $scope.modal.hide();
-    //  };
 
+})
+
+
+.controller('HomeCtrl', function($scope, $ionicModal , $rootScope) {
+    console.log($rootScope.user_id);
+    $scope.items = [
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 1 },
+        { name: "anmol irfan", to: "peshawar", from: "karachi", image: "img/76.jpg", date: "23/06/2016", id: 2 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 3 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 4 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 5 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 6 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 7 }
+    ];
+    
 
 })
 
@@ -205,7 +129,8 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 .controller('signin', function($scope , $http , SweetAlert ,$state , $rootScope) {
         $scope.signin = {};
-        $rootScope.loggedin = false;
+        $rootScope.loggedin = {};
+        $rootScope.user_id = {};
         $scope.signIn = function() {
         $http({
           method: 'POST',
@@ -215,14 +140,15 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             'password': $scope.signin.password,
             "command":"loginRequest"
             }
-          ),
+          ), 
           headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
                     },
           url: "http://localhost:8080/ShareMyRide/login.php"
           }).success(function(data,status,headers,config){
-            console.log(data);
-            if(angular.equals(data , "true")){
+            if(data==1){
+                $rootScope.loggedin = "loggedin";
+                $rootScope.user_id = $scope.signin.email;
                 SweetAlert.swal("","Successfull log in","success");
                 $state.go('app.home');
             }
