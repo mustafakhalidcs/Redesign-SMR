@@ -189,8 +189,16 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
     ];
 
 })
+.controller('TourCtrl', function($scope) {
+  
+    
 
-.controller('signin', function($scope , $http , SweetAlert ,$state) {
+
+})
+.controller('signin', function($scope , $ionicHistory, $http , SweetAlert ,$state) {
+    $scope.goBack = function(){
+    $ionicHistory.goBack();
+}
         $scope.signin = {};
         $scope.signIn = function() {
             $http({
@@ -212,7 +220,10 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
           });
         }
     })
-.controller('SignupCtrl', function($scope , $http ,SweetAlert) {
+.controller('SignupCtrl', function($scope ,$ionicHistory , $http ,SweetAlert) {
+    $scope.goBack = function(){
+    $ionicHistory.goBack();
+}
   $scope.signup = {};
   $scope.signUp = function() {
     $http({

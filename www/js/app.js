@@ -27,7 +27,12 @@
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
+ .state('tour',{
+            url: '/',
+            templateUrl: 'tour.html',
+            controller: 'TourCtrl'
+        })
+  
     .state('app', {
     url: '/app',
     abstract: true,
@@ -74,24 +79,20 @@
         }
       }
     })
-    .state('app.signin', {
+    .state('signin', {
       url: '/signin',
-      views: {
-        'menuContent': {
+      
           templateUrl: 'signin.html',
           controller: 'signin'
-        }
-      }
+        
     })
 
-  .state('app.signup', {
+  .state('signup', {
     url: '/signup',
-    views: {
-      'menuContent': {
+  
         templateUrl: 'signup.html',
         controller: 'SignupCtrl'
-      }
-    }
+      
   })
 
   .state('app.single', {
@@ -108,6 +109,6 @@
    
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+  $urlRouterProvider.otherwise('/');
 });
  
