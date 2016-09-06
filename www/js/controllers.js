@@ -70,6 +70,35 @@ console.log($rootScope.user_id);
         { type : "jeep"}
     ];
     $scope.date = new Date();
+    $scope.driver = {};
+  $scope.driverform = function() { 
+    $http({
+          method: 'POST',
+          data: $.param(
+            { 
+            'destination': $scope.driver.destination,
+            'current_location': $scope.driver.current_location,
+            'route': $scope.driver.route,
+            'departure_date': $scope.driver.departure_date,
+            'departure_time': $scope.driver.departure_time,
+            'per_head_charge':$scope.per_head_charge,
+            'driver.available_seats':$scope.driver.available_seats,
+            'vehicle_type':$scope.driver.vehicle_type,
+            'vehicle_number':$scope.driver.vehicle_number,
+            'smoker': $scope.driver.smoker,
+            'music_lover': $scope.driver.music_lover,
+            "command":"driverplan"
+            }
+          ),
+          headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+          url: "http://localhost:8080/ShareMyRide/driver-plan.php"
+          }).success(function(data,status,headers,config){
+            SweetAlert.swal(""," Your Plan Has been posted successfully!","success");
+            console.log('Data posted');
+          });
+  }
 })
 
 .controller('RiderModalCtrl', function($scope, $ionicModal) {
