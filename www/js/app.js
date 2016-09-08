@@ -83,31 +83,46 @@
         }
       }
     })
+    .state('app.login', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'signin.html',
+          controller: 'signin'
+        }
+      }
+    })
 
   .state('app.signup', {
     url: '/signup',
     views: {
       'menuContent': {
         templateUrl: 'signup.html',
-        controller: 'SignupCtrl'
+        controller: 'SignupCtrl' 
       }
     }
   })
 
-  .state('app.single', {
-    url: '/profile/:profileId',
+  .state('app.profile', {
+    url: '/profile',
     views: {
       'menuContent': {
         templateUrl: 'profile.html',
         controller: 'ProfileCtrl'
       }
     }
+  })
+  .state('app.tourDetail', {
+    url: '/tourDetail',
+    views: {
+      'menuContent': {
+        templateUrl: 'tour-detail.html',
+        controller: 'tourDetailCtrl'
+      }
+    }
   });
 
-   
-   
-
-  // if none of the above states are matched, use this as the fallback
+// if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/signin');
 });
  

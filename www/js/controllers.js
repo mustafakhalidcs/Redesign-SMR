@@ -1,9 +1,17 @@
 angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout ,$rootScope) {
-
 console.log($rootScope.user_id);        
 })
+
+        // With the new view caching in Ionic, Controllers are only called
+        // when they are recreated or on app start, instead of every page change.
+        // To listen for when this page is active (for example, to refresh data),
+        // listen for the $ionicView.enter event:
+        //$scope.$on('$ionicView.enter', function(e) {
+        //});
+
+ 
 
     .controller('demoCtrl', ['SweetAlert', function(SweetAlert) {
         var vm = this;
@@ -29,7 +37,21 @@ console.log($rootScope.user_id);
         }
     }])
 
-.controller('ProfileCtrl', function($scope) {
+.controller('ProfileCtrl', function($scope , $http , $rootScope) {
+    console.log($rootScope.user_id);
+
+    $http({
+        method: "GET",
+        params : {userid : $rootScope.user_id} , 
+        url:"http://localhost:8080/test/api.php"
+        }).then(function(response){
+        console.log(response);
+    });
+    
+    
+
+})
+.controller('tourDetailCtrl', function($scope) {
 
     $scope.items = [
         { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016" },
@@ -46,8 +68,8 @@ console.log($rootScope.user_id);
 
 
 
-.controller('ModalCtrl', function($scope, $ionicModal) {
-
+.controller('ModalCtrl', function($scope, $ionicModal , $http , SweetAlert ,$state , $rootScope) {
+        console.log($rootScope.user_id);
         $ionicModal.fromTemplateUrl('my-modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -70,8 +92,10 @@ console.log($rootScope.user_id);
         { type : "jeep"}
     ];
     $scope.date = new Date();
+
     $scope.driver = {};
-  $scope.driverform = function() { 
+  $scope.driverform = function() {
+    console.log($scope.driver.vehicle_type.type);
     $http({
           method: 'POST',
           data: $.param(
@@ -81,13 +105,15 @@ console.log($rootScope.user_id);
             'route': $scope.driver.route,
             'departure_date': $scope.driver.departure_date,
             'departure_time': $scope.driver.departure_time,
-            'per_head_charge':$scope.per_head_charge,
-            'driver.available_seats':$scope.driver.available_seats,
-            'vehicle_type':$scope.driver.vehicle_type,
+            'per_head_charge':$scope.driver.per_head_charge,
+            'available_seats':$scope.driver.available_seats,
+            'vehicle_type':$scope.driver.type,
             'vehicle_number':$scope.driver.vehicle_number,
             'smoker': $scope.driver.smoker,
-            'music_lover': $scope.driver.music_lover,
-            "command":"driverplan"
+            'music_listener': $scope.driver.music_listener,
+            'email':$rootScope.user_id,
+            "planof":"driver",
+            "command":"postplan"
             }
           ),
           headers : {
@@ -95,13 +121,16 @@ console.log($rootScope.user_id);
                     },
           url: "http://localhost:8080/ShareMyRide/driver-plan.php"
           }).success(function(data,status,headers,config){
+            console.log(data);
             SweetAlert.swal(""," Your Plan Has been posted successfully!","success");
-            console.log('Data posted');
+            
           });
   }
 })
 
+
 .controller('RiderModalCtrl', function($scope, $ionicModal) {
+
 
     $ionicModal.fromTemplateUrl('riderform.html', {
         scope: $scope,
@@ -123,6 +152,19 @@ console.log($rootScope.user_id);
 
 })
 
+.controller('HomeCtrl', function($scope, $ionicModal) {
+    $scope.items = [
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 1 },
+        { name: "anmol irfan", to: "peshawar", from: "karachi", image: "img/76.jpg", date: "23/06/2016", id: 2 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 3 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 4 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 5 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 6 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 7 }
+    ];
+   
+
+})
 
 .controller('HomeCtrl', function($scope, $ionicModal , $rootScope) {
     console.log($rootScope.user_id);
