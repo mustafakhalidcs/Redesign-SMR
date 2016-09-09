@@ -94,7 +94,7 @@ console.log($rootScope.user_id);
     $scope.date = new Date();
 
     $scope.driver = {};
-  $scope.driverform = function() {
+    $scope.driverform = function() {
     console.log($scope.driver.vehicle_type.type);
     $http({
           method: 'POST',
@@ -129,7 +129,7 @@ console.log($rootScope.user_id);
 })
 
 
-.controller('RiderModalCtrl', function($scope, $ionicModal) {
+.controller('RiderModalCtrl', function($scope, $ionicModal , $http , SweetAlert ,$state , $rootScope) {
 
 
     $ionicModal.fromTemplateUrl('riderform.html', {
@@ -148,6 +148,35 @@ console.log($rootScope.user_id);
         $scope.modal.remove();
     });
     $scope.date = new Date();
+    $scope.rider = {};
+    $scope.riderform = function() {
+    $http({
+          method: 'POST',
+          data: $.param(
+            { 
+            'destination': $scope.rider.destination,
+            'current_location': $scope.rider.current_location,
+            'route': $scope.rider.route,
+            'departure_date': $scope.rider.departure_date,
+            'departure_time': $scope.rider.departure_date,
+            'seats_required':$scope.rider.seats_required,
+            'smoker': $scope.rider.smoker,
+            'music_listener': $scope.rider.music_listener,
+            'email':$rootScope.user_id,
+            "planof":"rider",
+            "command":"postplan"
+            }
+          ),
+          headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+          url: "http://localhost:8080/ShareMyRide/driver-plan.php"
+          }).success(function(data,status,headers,config){
+            console.log(data);
+            SweetAlert.swal(""," Your Plan Has been posted successfully!","success");
+            
+          });
+  }
 
 
 })
