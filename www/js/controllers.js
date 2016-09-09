@@ -107,7 +107,7 @@ console.log($rootScope.user_id);
             'departure_time': $scope.driver.departure_time,
             'per_head_charge':$scope.driver.per_head_charge,
             'available_seats':$scope.driver.available_seats,
-            'vehicle_type':$scope.driver.type,
+            'vehicle_type':$scope.driver.vehicle_type.type,
             'vehicle_number':$scope.driver.vehicle_number,
             'smoker': $scope.driver.smoker,
             'music_listener': $scope.driver.music_listener,
