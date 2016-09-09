@@ -6,12 +6,11 @@
         <button class="button button-icon  ion-navicon" menu-toggle="left">
         </button>
       </ion-nav-buttons>
-<!--
       <ion-nav-buttons side="right">             
-            <a class="button button-icon  ion-log-in" href="#app/signin"></a>
--->
+            <a class="button button-icon  ion-log-in" href="#app/signin" ng-hide="$rootScope.user_id"></a>
+            <a class="button button-icon  ion-log-in" href="#app/signup" ng-show="$rootScope.user_id"></a>
 <!--    <img class="button button-clear" src="img/login.png">-->  
-<!--      </ion-nav-buttons >   -->
+      </ion-nav-buttons >   
     </ion-nav-bar>
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -25,7 +24,7 @@
             <p class=" whitec">22 years old</p>
           </div>
 <!--            <a href="#/app/home" class="item icon ion-star" menu-close ng-click="login()" style="background:transparent;">Login</a>-->
-  <a class="item item-icon-left" menu-close href="#" >
+  <a class="item item-icon-left" menu-close href="#app/profile" >
     <i class="icon ion-person"></i>
     Profile
   </a>

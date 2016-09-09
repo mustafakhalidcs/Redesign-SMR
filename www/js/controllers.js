@@ -1,6 +1,8 @@
 angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout ,$rootScope) {
+console.log($rootScope.user_id);        
+})
 
         // With the new view caching in Ionic, Controllers are only called
         // when they are recreated or on app start, instead of every page change.
@@ -9,45 +11,8 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         //$scope.$on('$ionicView.enter', function(e) {
         //});
 
-        // Form data for the login modal
-//        $scope.loginData = {};
-//
-//        // Create the login modal that we will use later
-//        $ionicModal.fromTemplateUrl('login.html', {
-//            scope: $scope
-//        }).then(function(modal) {
-//            $scope.modal = modal;
-//        });
-//
-//        // Triggered in the login modal to close it
-//        $scope.closeLogin = function() {
-//            $scope.modal.hide();
-//        };
-//
-//        // Open the login modal
-//        $scope.login = function() {
-//            $scope.modal.show();
-//        };
-//
-//        // Perform the login action when the user submits the login form
-//        $scope.doLogin = function() {
-//            console.log('Doing login', $scope.loginData);
-//
-//            // Simulate a login delay. Remove this and replace with your login
-//            // code if using a login system
-//            $timeout(function() {
-//                $scope.closeLogin();
-//            }, 1000);
-//        };
-    })
+ 
 
-//.controller('colorCtrl', function($scope) {
-//    $scope.colors = [
-//        { color : "red"},
-//        {color : "white"},
-//        { color : "black"}
-//    ];
-//})
     .controller('demoCtrl', ['SweetAlert', function(SweetAlert) {
         var vm = this;
         vm.alert = function() {
@@ -71,8 +36,24 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             });
         }
     }])
+.controller('TourCtrl', function($scope) {
+})
 
-.controller('ProfileCtrl', function($scope) {
+.controller('ProfileCtrl', function($scope , $http , $rootScope) {
+    console.log($rootScope.user_id);
+
+    $http({
+        method: "GET",
+        params : {userid : $rootScope.user_id} , 
+        url:"http://localhost/test/api.php"
+        }).then(function(response){
+        console.log(response);
+    });
+    
+    
+
+})
+.controller('tourDetailCtrl', function($scope) {
 
     $scope.items = [
         { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016" },
@@ -89,8 +70,8 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 
 
-.controller('ModalCtrl', function($scope, $ionicModal) {
-
+.controller('ModalCtrl', function($scope, $ionicModal , $http , SweetAlert ,$state , $rootScope) {
+        console.log($rootScope.user_id);
         $ionicModal.fromTemplateUrl('my-modal.html', {
             scope: $scope,
             animation: 'slide-in-up'
@@ -108,50 +89,70 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         });
     $scope.types = [
         { type : "Car"},
-        {type : "suzuki"},
+        { type : "suzuki"},
         { type : "bolan suzuki"},
         { type : "jeep"}
     ];
     $scope.date = new Date();
-    
-   
 
-        //  $scope.createContact = function(u) {        
-        //    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
-        //    $scope.modal.hide();
-        //  };
-//        $scope.images = [
-//            { image: "img/a1.png" },
-//            { image: "img/a2.png" },
-//            { image: "img/a3.png" },
-//            { image: "img/a4.png" },
-//            { image: "img/a5.png" },
-//            { image: "img/dabba.png" }
-//        ]
-//        $scope.current = 'img/ionic.png';
+    $scope.driver = {};
+  $scope.driverform = function() {
+    console.log($scope.driver.vehicle_type.type);
+    $http({
+          method: 'POST',
+          data: $.param(
+            { 
+            'destination': $scope.driver.destination,
+            'current_location': $scope.driver.current_location,
+            'route': $scope.driver.route,
+            'departure_date': $scope.driver.departure_date,
+            'departure_time': $scope.driver.departure_time,
+            'per_head_charge':$scope.driver.per_head_charge,
+            'available_seats':$scope.driver.available_seats,
+            'vehicle_type':$scope.driver.vehicle_type.type,
+            'vehicle_number':$scope.driver.vehicle_number,
+            'smoker': $scope.driver.smoker,
+            'music_listener': $scope.driver.music_listener,
+            'email':$rootScope.user_id,
+            "planof":"driver",
+            "command":"postplan"
+            }
+          ),
+          headers : {
+                'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+                    },
+          url: "http://localhost/ShareMyRide/driver-plan.php"
+          }).success(function(data,status,headers,config){
+            console.log(data);
+            SweetAlert.swal(""," Your Plan Has been posted successfully!","success");
+            
+          });
+  }
+})
 
-    })
-    .controller('RiderModalCtrl', function($scope, $ionicModal) {
 
-        $ionicModal.fromTemplateUrl('riderform.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
-        }).then(function(modal) {
-            $scope.modal = modal;
-        });
-        $scope.openModal = function() {
-            $scope.modal.show();
-        };
-        $scope.closeModal = function() {
-            $scope.modal.hide();
-        };
-        $scope.$on('$destroy', function() {
-            $scope.modal.remove();
-        });
+.controller('RiderModalCtrl', function($scope, $ionicModal) {
+
+
+    $ionicModal.fromTemplateUrl('riderform.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+    }).then(function(modal) {
+        $scope.modal = modal;
+    });
+    $scope.openModal = function() {
+        $scope.modal.show();
+    };
+    $scope.closeModal = function() {
+        $scope.modal.hide();
+    };
+    $scope.$on('$destroy', function() {
+        $scope.modal.remove();
+    });
     $scope.date = new Date();
 
-    })
 
+})
 
 .controller('HomeCtrl', function($scope, $ionicModal) {
     $scope.items = [
@@ -165,11 +166,20 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
     ];
    
 
-    //  $scope.createContact = function(u) {        
-    //    $scope.contacts.push({ name: u.firstName + ' ' + u.lastName });
-    //    $scope.modal.hide();
-    //  };
+})
 
+.controller('HomeCtrl', function($scope, $ionicModal , $rootScope) {
+    console.log($rootScope.user_id);
+    $scope.items = [
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 1 },
+        { name: "anmol irfan", to: "peshawar", from: "karachi", image: "img/76.jpg", date: "23/06/2016", id: 2 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 3 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 4 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 5 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 6 },
+        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 7 }
+    ];
+    
 
 })
 
@@ -189,43 +199,61 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
     ];
 
 })
-.controller('TourCtrl', function($scope) {
-  
-    
 
-
-})
-.controller('signin', function($scope , $ionicHistory, $http , SweetAlert ,$state) {
-    $scope.goBack = function(){
+.controller('signin', function($scope ,$ionicHistory , $http , SweetAlert ,$state , $rootScope) {
+     $scope.goBack = function(){
     $ionicHistory.goBack();
 }
         $scope.signin = {};
+        $rootScope.loggedin = {};
+        $rootScope.user_id = {};
         $scope.signIn = function() {
-            $http({
+        $http({
           method: 'POST',
           data: $.param(
-            { 
+            {  
             'email': $scope.signin.email,
             'password': $scope.signin.password,
             "command":"loginRequest"
             }
-          ),
+          ), 
           headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
                     },
-          url: "http://localhost:8080/ShareMyRide/signup.php"
+          url: "http://localhost/ShareMyRide/login.php"
           }).success(function(data,status,headers,config){
-            SweetAlert.swal("","Credential matched","success");
-            $state.go('app.home');
+            if(data==1){
+                $rootScope.loggedin = "loggedin";
+                $rootScope.user_id = $scope.signin.email;
+                SweetAlert.swal("","Successfull log in","success");
+                $state.go('app.home');
+            }
+            else{
+                SweetAlert.swal({
+
+                title: "Credentials mismatch!",
+                text: "Do you want to create a new account?",
+                type: "error",
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes",
+                cancelButtonText: "No",
+                closeOnConfirm: true,
+                closeOnCancel: true
+                }, function() {
+                   // $state.go('signup');
+                });
+            }
           });
         }
     })
 .controller('SignupCtrl', function($scope ,$ionicHistory , $http ,SweetAlert) {
-    $scope.goBack = function(){
+     $scope.goBack = function(){
     $ionicHistory.goBack();
 }
   $scope.signup = {};
-  $scope.signUp = function() {
+  $scope.signUp = function() { 
     $http({
           method: 'POST',
           data: $.param(
@@ -243,9 +271,9 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
           headers : {
                 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
                     },
-          url: "http://localhost:8080/ShareMyRide/signup.php"
+          url: "http://localhost/share-my-ride-backend/signup.php"
           }).success(function(data,status,headers,config){
-            SweetAlert.swal("",$scope.signup.first_name," Your acount has been created","success");
+            SweetAlert.swal("",$scope.signup.first_name+" Your acount has been created","success");
             console.log('Data posted');
           });
   }
