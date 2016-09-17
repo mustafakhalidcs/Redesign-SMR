@@ -74,6 +74,16 @@
         }
       }
     })
+    .state('app.tours-list', {
+      url: '/tours-list',
+      views: {
+        'menuContent': {
+          templateUrl: 'tours-list.html',
+          controller: 'tourCtrl'
+        }
+      },
+      params: {'destination': ':destination' , 'departure_date' : ':departure_date' , 'command' : ':command'}
+    })
     .state('app.signin', {
       url: '/signin',
       views: {
@@ -116,7 +126,7 @@
     url: '/tourDetail',
     views: {
       'menuContent': {
-        templateUrl: 'tour-detail.html',
+        templateUrl: 'tour-details.html',
         controller: 'tourDetailCtrl'
       }
     }
