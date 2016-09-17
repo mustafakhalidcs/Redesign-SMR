@@ -123,13 +123,14 @@
     }
   })
   .state('app.tourDetail', {
-    url: '/tourDetail',
+    url: '/tourDetail?plan_id',
     views: {
       'menuContent': {
         templateUrl: 'tour-details.html',
         controller: 'tourDetailCtrl'
       }
-    }
+    },
+    params: {'plan_id' : ':plan_id' , 'command' : ':tourDetail'}
   });
 
 // if none of the above states are matched, use this as the fallback

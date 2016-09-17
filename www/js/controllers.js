@@ -57,8 +57,18 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 
     })
-    .controller('tourDetailCtrl', function($scope , $stateParams) {
-        console.log($stateParams);
+    .controller('tourDetailCtrl', function($scope , $stateParams , $http) {
+        console.log("Plan_id is : "+ $stateParams.plan_id);
+        $http({
+            method: "GET",
+            url: "http://localhost:8080/ShareMyRide/tour-detail.php",
+            params: {"plan_id" :  $stateParams.plan_id , "command" : "tourDetail"},
+        }).then(function(response) {
+            $scope.detail = response.data;
+            console.log(response.data);
+            
+        });
+
     })
 
 
@@ -119,7 +129,6 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             },
             url: "http://localhost:8080/ShareMyRide/driver-plan.php"
         }).success(function(data, status, headers, config) {
-            console.log(data);
             SweetAlert.swal("", " Your Plan Has been posted successfully!", "success");
 
         });
@@ -180,14 +189,13 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
     })
     .controller('tourCtrl', function($scope, $http, $stateParams) {
-       if($stateParams){
+       if($stateParams.command == "findpeople"){
+        console.log("State params are true");
             $http({
                 url: "http://localhost:8080/ShareMyRide/tours-list.php", 
                 method: "GET",
                 params: {"departure_date" : $stateParams.departure_date , "destination" : $stateParams.destination}
             }).then(function(response){
-               $scope.tours = response.data;
-               console.log($scope.tours);
             });
         }
         else{
@@ -195,10 +203,11 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 url: "http://localhost:8080/ShareMyRide/tours-list.php", 
                 method: "GET",
             }).then(function(response){
-                $scope.tours = response.data;
-                console.log($scope.tours);
+               // $scope.tours = response.data;
+                $scope.tours = [{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"0000-00-00","current_location":"peshawar","destination":"lahore","modified_date":"2016-09-20","plan_id":"6","role":"driver","available_seats":"2","per_head_charge":"800","vehical_type":""},{"first_name":"Mustafa","last_name":"Khalid","email":"mustafakhalidcs@gmail.com","departure_date":"2016-09-30","current_location":"kohat","destination":"multan","modified_date":"2016-09-16","plan_id":"27","role":"driver","available_seats":"2","per_head_charge":"2500","vehical_type":"jeep"},{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"2016-09-23","current_location":"peshawar","destination":"kohat","modified_date":"0000-00-00","plan_id":"8","role":"driver","available_seats":"3","per_head_charge":"600","vehical_type":"jeep"},{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"0000-00-00","current_location":"peshawar","destination":"mianwali","modified_date":"0000-00-00","plan_id":"7","role":"driver","available_seats":"1","per_head_charge":"1500","vehical_type":""},{"first_name":"Mustafa","last_name":"Khalid","email":"mustafakhalidcs@gmail.com","departure_date":"0000-00-00","current_location":"kohat","destination":"multan","modified_date":"0000-00-00","plan_id":"25","role":"driver","available_seats":"2","per_head_charge":"2500","vehical_type":"jeep"}];
+                console.log("tour data is : "+$scope.tours);
             });
-        }
+       }
     })
 
 .controller('HomeCtrl', function($scope, $ionicModal, $rootScope, $state) {
@@ -276,7 +285,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                             closeOnConfirm: true,
                             closeOnCancel: true
                         }, function() {
-                           console.log()
+                           console.log();
                         });
                     }
                 });

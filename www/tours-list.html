@@ -8,10 +8,11 @@
                 <div class="item item-thumbnail-left " width="400" height="200" >
                    <img src="img/default-user.png"/>
                    <h2 style="text-transform:capitalize;">{{tour.first_name}}&nbsp;{{tour.last_name}}</h2>
-                   <p> <span>To:</span>    {{tour.destination}}</p>
-                   <p> <span>From:</span>    {{tour.current_location}}</p>
-                   <label>{{tour.departure_date}}</label>
-                   <label>{{tour.modified_date}}</label>
+                   <p> <span>To:</span>{{tour.destination}}</p>
+                   <p> <span>From:</span>{{tour.current_location}}</p>
+                   <p><span><a href="#/app/tourDetail?plan_id={{tour.plan_id}}">Tour Detail</a></span></p>
+                   <label>Move at :{{tour.departure_date}}</label>
+                   
                 </div>
          </div>
          
