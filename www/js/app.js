@@ -27,11 +27,7 @@
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-.state('tour',{
-            url: '/',
-            templateUrl: 'tour.html',
-            controller: 'TourCtrl'
-        })
+
     .state('app', {
     url: '/app',
     abstract: true,
@@ -78,49 +74,44 @@
         }
       }
     })
-//    .state('app.signin', {
-//      url: '/signin',
-//      views: {
-//        'menuContent': {
-//          templateUrl: 'signin.html',
-//          controller: 'signin'
-//        }
-//      }
-//    })
-      .state('signin', {
+    .state('app.tours-list', {
+      url: '/tours-list',
+      views: {
+        'menuContent': {
+          templateUrl: 'tours-list.html',
+          controller: 'tourCtrl'
+        }
+      },
+      params: {'destination': ':destination' , 'departure_date' : ':departure_date' , 'command' : ':command'}
+    })
+    .state('app.signin', {
       url: '/signin',
-      
+      views: {
+        'menuContent': {
           templateUrl: 'signin.html',
           controller: 'signin'
-        
+        }
+      }
+    })
+    .state('app.login', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'signin.html',
+          controller: 'signin'
+        }
+      }
     })
 
-  .state('signup', {
+  .state('app.signup', {
     url: '/signup',
-  
+    views: {
+      'menuContent': {
         templateUrl: 'signup.html',
-        controller: 'SignupCtrl'
-      
+        controller: 'SignupCtrl' 
+      }
+    }
   })
-//    .state('app.login', {
-//      url: '/',
-//      views: {
-//        'menuContent': {
-//          templateUrl: 'signin.html',
-//          controller: 'signin'
-//        }
-//      }
-//    })
-//
-//  .state('app.signup', {
-//    url: '/signup',
-//    views: {
-//      'menuContent': {
-//        templateUrl: 'signup.html',
-//        controller: 'SignupCtrl' 
-//      }
-//    }
-//  })
 
   .state('app.profile', {
     url: '/profile',
@@ -131,8 +122,8 @@
       }
     }
   })
-  .state('app.tourDetails', {
-    url: '/tour-details/:tourdetailsId',
+  .state('app.tourDetail', {
+    url: '/tourDetail',
     views: {
       'menuContent': {
         templateUrl: 'tour-details.html',
@@ -140,11 +131,8 @@
       }
     }
   });
-       
-        
-        
 
 // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/app/signin');
 });
  
