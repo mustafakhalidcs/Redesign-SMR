@@ -1,0 +1,71 @@
+
+<ion-view view-title="Tour Details" class="bg1 profile">
+   <ion-content scrollbar-y="true" has-bouncing="false" class="transparent" >
+    <ion-item  type="item-text-wrap" class="transparent no-border pad0" >
+          <div class="card">
+<!--               <img src="img/76.jpg" class="full-image" />-->
+                  <div class="item profileitem" height="200" >
+                        <div class="row pad0" >
+                        <div class="col col-45 ">
+                           <div class="item item-avatar item-text-wrap transparent pad0"   menu-close >
+                          <img  src="img/76.jpg">
+                          </div>
+                        </div>
+                        <div class="col col-45 col-center">  
+                              <h2 class="whitec word">{{detail[0].first_name}}&nbsp;{{detail[0].last_name}}</h2>
+                              <p>Convience is  {{detail[0].vehical_type}}</p> 
+                              <p ng-if="detail[0].smoker">
+                                {{detail[0].first_name}} is smoker
+                              </p>
+                              <p ng-if="detail[0].music_lover">
+                                {{detail[0].first_name}} is Music Lover
+                              </p>
+                        </div>
+<!--
+                        <div class="col col-20 col-center">
+                              <div class="circle-text time">
+                                  <div>
+                                  <h3 class="circle-text-top40">17</h3>
+                                  <h3 class="circle-text-top3"> am</h3>
+                                  </div>
+                              </div>
+                        </div>
+-->
+                       </div>  
+                       <div class="row">
+                          <div class="col col-100">
+                            <h3 class="whitec word">{{detail[0].mobile}}</h3>
+                            <p>{{detail[0].email}}</p>
+                          </div>
+                       </div>
+                  </div>
+              <div class="item text-right profilediv">
+              <p class="blue"> <span >current location</span>{{detail[0].current_location}} </p> 
+              </div>
+              
+              <div class="item text-right profilediv" >
+                 <p class="blue"><span >Destination</span>{{detail[0].destination}}</p> 
+              </div>
+              
+              <div class="item text-right profilediv">
+                <p class="blue"> <span >Route</span>{{detail[0].route}}</p> 
+              </div>
+              <div class="item text-right profilediv">
+                <p class="blue"> <span >per head charge</span>{{detail[0].per_head_charge}}</p> 
+              </div>
+                  <div class="item text-right profilediv">
+                  <p class="blue"><span >Available Seats</span>{{detail[0].available_seats}}</p> 
+                  </div>
+                <button class="button button-block joinbtn" onclick="swal({   
+title: 'Sent',
+            text: 'Your request has been sent',
+            timer: 1100,
+          type:'success',
+            showConfirmButton: false });" > 
+                 Join
+                </button>
+              </div>
+           </ion-item>
+         </ion-list> 
+        </ion-content>
+</ion-view>

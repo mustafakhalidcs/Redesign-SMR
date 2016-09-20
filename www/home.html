@@ -3,14 +3,14 @@
             <img src="img/bg.png" class="full-image" />
      <ion-list >
       <ion-item collection-repeat="item in items"  type="item-text-wrap" class="transparent"  >
-          <div class="card" style=" ">
+          <div class="card" >
                 <div class="item item-thumbnail-left " width="400" height="200" >
                    <img ng-src="{{item.image}}"/>
                    <h2 style="text-transform:capitalize;">
-                   <a href="#/app/profile/{{item.id}}" class=" blue">{{item.name}}</a></h2>
+                   <a href="#/app/tour-details/{{item.id}}" class=" blue">{{item.name}}</a></h2>
                    <p> <span>To:</span>    {{item.to}}</p>
                    <p> <span>From:</span>    {{item.from}}</p>
-                    <label>{{item.date}}</label>
+                   <label>{{item.date}}</label>
                 </div>
          </div>    
       </ion-item>

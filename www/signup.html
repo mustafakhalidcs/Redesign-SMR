@@ -1,0 +1,95 @@
+<ion-view view-title="Signup" class="bg1 profile">
+      <ion-nav-bar class="bar-header ab">
+    <ion-nav-buttons side="left">
+    <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
+      <i class="icon ion-ios-arrow-back whitec"></i> 
+    </button>
+  </ion-nav-buttons>
+        </ion-nav-bar>
+    <ion-content class="padding signform " has-bouncing="false" scrollbar-y="true">
+        <div class="list list-inset  pad2 transparent">
+            <h3 class="blue text-center">Share my Ride</h3>
+            <form name="signupForm" novalidate="" ng-submit="signUp(signupForm.$valid)">
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signupForm.first_name.$invalid && !signupForm.first_name.$pristine,'no-errors' : signupForm.first_name.$valid} ">
+                        <i class="icon ion-ios-person placeholder-icon"></i>
+                        <input type="text" name="first_name" ng-model="signup.first_name" ng-minlength="3" ng-maxlength="20" placeholder="First Name" required>
+                    </label>
+                    <div class="error-container" ng-show="signupForm.first_name.$error" ng-messages="signupForm.first_name.$error" ng-if="signupForm.first_name.$invalid  && !signupForm.first_name.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your name is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your name is required.</p>
+                    </div>
+                </p>
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signupForm.last_name.$invalid  && !signupForm.last_name.$pristine ,'no-errors' : signupForm.last_name.$valid} ">
+                        <i class="icon ion-ios-person placeholder-icon"></i>
+                        <input type="text" name="last_name" ng-model="signup.last_name" ng-minlength="3" ng-maxlength="20" placeholder="Last Name" required>
+                    </label>
+                    <div class="error-container" ng-show="signupForm.last_name.$error" ng-messages="signupForm.last_name.$error" ng-if="signupForm.last_name.$invalid && !signupForm.last_name.$pristine">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Your name is too short.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your name is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your name is required.</p>
+                    </div>
+                </p>
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signupForm.mobile.$invalid && !signupForm.mobile.$pristine,'no-errors' : signupForm.mobile.$valid} ">
+                        <i class="icon ion-android-phone-portrait placeholder-icon"></i>
+                        <input type="text" name="mobile" ng-model="signup.mobile"  ng-minlength="11" maxlength="11" placeholder="Mobile No." >
+                    </label>
+                    <div class="error-container" ng-show="signupForm.mobile.$error" ng-messages="signupForm.mobile.$error" ng-if="signupForm.mobile.$invalid && !signupForm.mobile.$pristine">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter 11 digit code</p>
+                        
+                    </div>
+                </p>
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signupForm.resident_of.$invalid && !signupForm.resident_of.$pristine,'no-errors' : signupForm.resident_of.$valid} ">
+                        <i class="icon ion-ios-location placeholder-icon"></i>
+                        <input type="text" name="resident_of" ng-model="signup.resident_of" ng-minlength="5" maxlength="20" placeholder="Resident Of" required>
+                    </label>
+                    <div class="error-container" ng-show="signupForm.resident_of.$error" ng-messages="signupForm.resident_of.$error" ng-if="signupForm.resident_of.$invalid && !signupForm.resident_of.$pristine">
+                      
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter at least 8 characters.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> This field is required.</p>
+                    </div>
+                </p>
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signupForm.email.$invalid && !signupForm.email.$pristine,'no-errors' : signupForm.email.$valid} ">
+                        <i class="icon ion-ios-email placeholder-icon"></i>
+                        <input type="email" name="email" ng-model="signup.email" placeholder="Enter Email" ng-minlength="13" maxlength="30" required>
+                    </label>
+                    <div class="error-container" ng-show="signupForm.email.$error" ng-messages="signupForm.email.$error" ng-if="signupForm.email.$invalid && !signupForm.email.$pristine">
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your email address is required.</p>
+                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter valid email address.</p>
+                 
+                    </div>
+                </p>
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signupForm.password.$invalid && !signupForm.password.$pristine , 'no-errors' : signupForm.password.$valid}">
+                        <i class="icon ion-ios-locked placeholder-icon"></i>
+                        <input type="password" name="password" ng-model="signup.password" placeholder="Enter Password" ng-minlength="5" ng-maxlength="20" required>
+                    </label>
+                    <div class="error-container " ng-show="signupForm.password.$error " ng-messages="signupForm.password.$error" ng-if="signupForm.password.$invalid && !signupForm.password.$pristine">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Password is too short</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Password is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Password is required.</p>
+                    </div>
+                </p>
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : signupForm.NIC.$invalid && !signupForm.NIC.$pristine,'no-errors' : signupForm.NIC.$valid} ">
+                        <i class="icon ion-android-phone-portrait placeholder-icon"></i>
+                        <input type="text" name="NIC" ng-model="signup.NIC" ng-minlength="13" maxlength="13" placeholder="CNIC NO." required>
+                    </label>
+                    <div class="error-container" ng-show="signupForm.NIC.$error" ng-messages="signupForm.NIC.$error" ng-if="signupForm.NIC.$invalid && !signupForm.NIC.$pristine">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter 13 digit code</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Mobile No. is required.</p>
+                    </div>
+                </p>
+                <button class="button  button-full button-block buttondr bluebtn" type="submit" ng-disabled="signupForm.$invalid">
+                    Sign Up
+                </button>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>
+

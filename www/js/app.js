@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-    angular.module('starter', ['ionic', 'starter.controllers'])
+    angular.module('starter', ['ionic', 'starter.controllers','ngMessages'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -27,7 +27,11 @@
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
+.state('tour',{
+            url: '/',
+            templateUrl: 'tour.html',
+            controller: 'TourCtrl'
+        })
     .state('app', {
     url: '/app',
     abstract: true,
@@ -51,7 +55,7 @@
         'menuContent': {
           templateUrl: 'notif.html',
             controller: 'NotifCtrl'
-//<<<<<<< HEAD
+
         }
       }
     })
@@ -61,8 +65,7 @@
         'menuContent': {
           templateUrl: 'uptours.html',
             controller: 'UptoursCtrl'
-//=======
-//>>>>>>> origin/master
+
         }
       }
     })
@@ -75,35 +78,83 @@
         }
       }
     })
-   .state('profile', {
-    url: '/profile',
-    templateUrl: 'profile.html',
-      controller: 'ProfileCtrl'
-  })
-
-//  .state('app.brow', {
-//      url: '/brow',
+    
+    .state('app.tours-list', {
+      url: '/tours-list',
+      views: {
+        'menuContent': {
+          templateUrl: 'tours-list.html',
+          controller: 'tourCtrl'
+        }
+      },
+      params: {'destination': ':destination' , 'departure_date' : ':departure_date' , 'command' : ':command'}
+    })
+//    .state('app.signin', {
+//      url: '/signin',
 //      views: {
 //        'menuContent': {
-//          templateUrl: 'brow.html',
-//            controller: 'BrowCtrl'
-//         
+//          templateUrl: 'signin.html',
+//          controller: 'signin'
 //        }
 //      }
 //    })
-  .state('app.single', {
-    url: '/profile/:profileId',
+//    .state('app.login', {
+//      url: '/',
+//      views: {
+//        'menuContent': {
+//          templateUrl: 'signin.html',
+//          controller: 'signin'
+//        }
+//      }
+//    })
+
+//  .state('app.signup', {
+//    url: '/signup',
+//    views: {
+//      'menuContent': {
+//        templateUrl: 'signup.html',
+//        controller: 'SignupCtrl' 
+//      }
+//    }
+//  })
+   .state('signin', {
+      url: '/signin',
+      
+          templateUrl: 'signin.html',
+          controller: 'signin'
+        
+    })
+
+  .state('signup', {
+    url: '/signup',
+  
+        templateUrl: 'signup.html',
+        controller: 'SignupCtrl'
+      
+  })
+
+  .state('app.profile', {
+    url: '/profile',
     views: {
       'menuContent': {
         templateUrl: 'profile.html',
         controller: 'ProfileCtrl'
       }
-    }
+    },
+    params:{'user_id' : ':user_id' , 'command' : ':profile'}
+  })
+  .state('app.tourDetail', {
+    url: '/tourDetail?plan_id',
+    views: {
+      'menuContent': {
+        templateUrl: 'tour-details.html',
+        controller: 'tourDetailCtrl'
+      }
+    },
+    params: {'plan_id' : ':plan_id' , 'command' : ':tourDetail'}
   });
 
-   
-   
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+// if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/');
 });
+ 

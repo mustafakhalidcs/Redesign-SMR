@@ -1,0 +1,23 @@
+<ion-view view-title="Tours List" class="bg1 home">
+   <ion-content scrollbar-y="true" has-bouncing="false"   class=" transparent">
+   <ion-list>
+      <ion-item collection-repeat="tour in tours"  type="item-text-wrap" class="transparent"  >
+      
+          <div class="card">
+
+                <div class="item item-thumbnail-left " width="400" height="200" >
+                   <img src="img/default-user.png"/>
+                   <h2 class= "blue">{{tour.first_name}}&nbsp;{{tour.last_name}}</h2>
+                   <p> <span>To:</span>  {{tour.destination}}</p>
+                   <p> <span>From:</span> {{tour.current_location}}</p>
+                   <p><span><a href="#/app/tourDetail?plan_id={{tour.plan_id}}">Tour Detail</a></span></p>
+                   <label>Move at :{{tour.departure_date}}</label>
+                   
+                </div>
+         </div>
+         
+      </ion-item>
+    </ion-list>  
+ </ion-content>
+
+</ion-view>
