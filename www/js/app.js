@@ -27,7 +27,11 @@
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-
+.state('tour',{
+            url: '/',
+            templateUrl: 'tour.html',
+            controller: 'TourCtrl'
+        })
     .state('app', {
     url: '/app',
     abstract: true,
@@ -85,33 +89,48 @@
       },
       params: {'destination': ':destination' , 'departure_date' : ':departure_date' , 'command' : ':command'}
     })
-    .state('app.signin', {
+//    .state('app.signin', {
+//      url: '/signin',
+//      views: {
+//        'menuContent': {
+//          templateUrl: 'signin.html',
+//          controller: 'signin'
+//        }
+//      }
+//    })
+//    .state('app.login', {
+//      url: '/',
+//      views: {
+//        'menuContent': {
+//          templateUrl: 'signin.html',
+//          controller: 'signin'
+//        }
+//      }
+//    })
+
+//  .state('app.signup', {
+//    url: '/signup',
+//    views: {
+//      'menuContent': {
+//        templateUrl: 'signup.html',
+//        controller: 'SignupCtrl' 
+//      }
+//    }
+//  })
+   .state('signin', {
       url: '/signin',
-      views: {
-        'menuContent': {
+      
           templateUrl: 'signin.html',
           controller: 'signin'
-        }
-      }
-    })
-    .state('app.login', {
-      url: '/',
-      views: {
-        'menuContent': {
-          templateUrl: 'signin.html',
-          controller: 'signin'
-        }
-      }
+        
     })
 
-  .state('app.signup', {
+  .state('signup', {
     url: '/signup',
-    views: {
-      'menuContent': {
+  
         templateUrl: 'signup.html',
-        controller: 'SignupCtrl' 
-      }
-    }
+        controller: 'SignupCtrl'
+      
   })
 
   .state('app.profile', {
@@ -136,6 +155,6 @@
   });
 
 // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/signin');
+  $urlRouterProvider.otherwise('/');
 });
  

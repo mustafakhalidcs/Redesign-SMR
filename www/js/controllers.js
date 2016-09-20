@@ -1,9 +1,9 @@
 angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope , $state) {
-    // if (angular.isUndefined($rootScope.user_id) || $rootScope.user_id == null) {
-    //     $state.go('app.signin');
-    // }
+//     if (angular.isUndefined($rootScope.user_id) || $rootScope.user_id == null) {
+//         $state.go('app.signin');
+//     }
     $scope.logout = function(){
         $rootScope.user_id = {};
     }
@@ -65,8 +65,9 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             url: "http://localhost:8080/ShareMyRide/tour-detail.php",
             params: {"plan_id" :  $stateParams.plan_id ,"command" : "tourDetail"},
         }).then(function(response) {
-            $scope.detail = response.data;
-            console.log(response.data);
+           $scope.detail = response.data;
+//            $scope.detail= [{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","mobile":"31534598001","departure_date":"0000-00-00","current_location":"peshawar","destination":"lahore","modified_date":"2016-09-20","plan_id":"6","role":"driver","route":"motorway","smoker":"","music_lover":"yes","available_seats":"2","per_head_charge":"800","vehical_type":"jeep"}];
+            console.log($scope.detail);
             var data = response.data;
             console.log(data[0].email);
             
@@ -249,7 +250,10 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 })
 
-.controller('signin', function($scope, $http, SweetAlert, $state, $rootScope, $ionicLoading , $timeout) {
+.controller('signin', function($scope ,$ionicHistory, $http, SweetAlert, $state, $rootScope, $ionicLoading , $timeout) {
+     $scope.goBack = function(){
+    $ionicHistory.goBack();
+}
         $ionicLoading.show({
             content: 'Loading',
             animation: 'fade-in',
@@ -302,7 +306,10 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         }, 500);
         
     })
-    .controller('SignupCtrl', function($scope, $http, SweetAlert) {
+    .controller('SignupCtrl', function($scope ,$ionicHistory, $http, SweetAlert) {
+     $scope.goBack = function(){
+    $ionicHistory.goBack();
+}
         $scope.signup = {};
         $scope.signUp = function() {
             $http({

@@ -1,26 +1,19 @@
 
-<ion-view view-title="tour Details" class="bg1 profile">
-   <ion-content scrollbar-y="true" has-bouncing="false" class="transparent" >       
-     <ion-list>
-         
-      <ion-item  type="item-text-wrap" class="transparent no-border pad0" >
-
-<ion-view view-title="Profile" class="bg1 profile">
+<ion-view view-title="Tour Details" class="bg1 profile">
    <ion-content scrollbar-y="true" has-bouncing="false" class="transparent" >
     <ion-item  type="item-text-wrap" class="transparent no-border pad0" >
-
           <div class="card">
-               <img src="img/76.jpg" class="full-image" />
-                  <div class="item profileitem" height="200">
+<!--               <img src="img/76.jpg" class="full-image" />-->
+                  <div class="item profileitem" height="200" >
                         <div class="row pad0" >
-                        <div class="col col-35 ">
-                           <div class="item item-thumbnail-left item-text-wrap transparent pad0"   menu-close >
-                          <img  src="img/a3.png">
+                        <div class="col col-45 ">
+                           <div class="item item-avatar item-text-wrap transparent pad0"   menu-close >
+                          <img  src="img/76.jpg">
                           </div>
                         </div>
                         <div class="col col-45 col-center">  
                               <h2 class="whitec word">{{detail[0].first_name}}&nbsp;{{detail[0].last_name}}</h2>
-                              <p>Convience is of type {{detail[0].vehical_type}}</p> 
+                              <p>Convience is  {{detail[0].vehical_type}}</p> 
                               <p ng-if="detail[0].smoker">
                                 {{detail[0].first_name}} is smoker
                               </p>
@@ -28,6 +21,7 @@
                                 {{detail[0].first_name}} is Music Lover
                               </p>
                         </div>
+<!--
                         <div class="col col-20 col-center">
                               <div class="circle-text time">
                                   <div>
@@ -36,6 +30,7 @@
                                   </div>
                               </div>
                         </div>
+-->
                        </div>  
                        <div class="row">
                           <div class="col col-100">
