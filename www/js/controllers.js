@@ -1,9 +1,9 @@
 angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope , $state) {
-    // if (angular.isUndefined($rootScope.user_id) || $rootScope.user_id == null) {
-    //     $state.go('app.signin');
-    // }
+    if (angular.isUndefined($rootScope.user_id) || $rootScope.user_id == null) {
+        $state.go('app.signin');
+    }
     $scope.logout = function(){
         $rootScope.user_id = {};
     }
@@ -68,7 +68,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             $scope.detail = response.data;
             console.log(response.data);
             var data = response.data;
-            console.log(data[0].email);
+            $rootScope.driver_email = data[0].email;
             
         });
 
