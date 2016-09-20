@@ -74,6 +74,7 @@
         }
       }
     })
+    
     .state('app.tours-list', {
       url: '/tours-list',
       views: {
@@ -120,7 +121,8 @@
         templateUrl: 'profile.html',
         controller: 'ProfileCtrl'
       }
-    }
+    },
+    params:{'user_id' : ':user_id' , 'command' : ':profile'}
   })
   .state('app.tourDetail', {
     url: '/tourDetail?plan_id',
