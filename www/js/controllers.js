@@ -33,7 +33,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             showConfirmButton: true,
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes",
+            confirmButtonText: "Yes", 
             cancelButtonText: "No",
             closeOnConfirm: false,
             closeOnCancel: true
@@ -48,24 +48,27 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
         $http({
             method: "GET",
-            params: { userid: $rootScope.user_id },
-            url: "http://localhost:8080/test/api.php"
+            params: { user_id: $rootScope.user_id , "command" : "profile"},
+            url: "http://localhost:8080/ShareMyRide/user-profile.php"
         }).then(function(response) {
-            console.log(response);
+            $scope.user_data = response.data;
+            console.log($scope.user_data);
         });
 
 
 
     })
-    .controller('tourDetailCtrl', function($scope , $stateParams , $http) {
+    .controller('tourDetailCtrl', function($scope , $stateParams , $http , $rootScope) {
         console.log("Plan_id is : "+ $stateParams.plan_id);
         $http({
             method: "GET",
             url: "http://localhost:8080/ShareMyRide/tour-detail.php",
-            params: {"plan_id" :  $stateParams.plan_id , "command" : "tourDetail"},
+            params: {"plan_id" :  $stateParams.plan_id ,"command" : "tourDetail"},
         }).then(function(response) {
             $scope.detail = response.data;
             console.log(response.data);
+            var data = response.data;
+            console.log(data[0].email);
             
         });
 
@@ -196,6 +199,8 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 method: "GET",
                 params: {"departure_date" : $stateParams.departure_date , "destination" : $stateParams.destination}
             }).then(function(response){
+                $scope.tours = response.data;
+                console.log($scope.tours);
             });
         }
         else{
@@ -203,8 +208,8 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 url: "http://localhost:8080/ShareMyRide/tours-list.php", 
                 method: "GET",
             }).then(function(response){
-               // $scope.tours = response.data;
-                $scope.tours = [{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"0000-00-00","current_location":"peshawar","destination":"lahore","modified_date":"2016-09-20","plan_id":"6","role":"driver","available_seats":"2","per_head_charge":"800","vehical_type":""},{"first_name":"Mustafa","last_name":"Khalid","email":"mustafakhalidcs@gmail.com","departure_date":"2016-09-30","current_location":"kohat","destination":"multan","modified_date":"2016-09-16","plan_id":"27","role":"driver","available_seats":"2","per_head_charge":"2500","vehical_type":"jeep"},{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"2016-09-23","current_location":"peshawar","destination":"kohat","modified_date":"0000-00-00","plan_id":"8","role":"driver","available_seats":"3","per_head_charge":"600","vehical_type":"jeep"},{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"0000-00-00","current_location":"peshawar","destination":"mianwali","modified_date":"0000-00-00","plan_id":"7","role":"driver","available_seats":"1","per_head_charge":"1500","vehical_type":""},{"first_name":"Mustafa","last_name":"Khalid","email":"mustafakhalidcs@gmail.com","departure_date":"0000-00-00","current_location":"kohat","destination":"multan","modified_date":"0000-00-00","plan_id":"25","role":"driver","available_seats":"2","per_head_charge":"2500","vehical_type":"jeep"}];
+                //$scope.tours = response.data;
+                $scope.tours = [{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"0000-00-00","current_location":"peshawar","destination":"lahore","modified_date":"2016-09-20","plan_id":"6","role":"driver","available_seats":"2","per_head_charge":"800","vehical_type":"jeep"},{"first_name":"Mustafa","last_name":"Khalid","email":"mustafakhalidcs@gmail.com","departure_date":"2016-09-30","current_location":"kohat","destination":"multan","modified_date":"2016-09-16","plan_id":"27","role":"driver","available_seats":"2","per_head_charge":"2500","vehical_type":"jeep"},{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"2016-09-23","current_location":"peshawar","destination":"kohat","modified_date":"2016-09-15","plan_id":"8","role":"driver","available_seats":"3","per_head_charge":"600","vehical_type":"jeep"},{"first_name":"Mustafa","last_name":"Khalid","email":"mustafakhalidcs@gmail.com","departure_date":"0000-00-00","current_location":"kohat","destination":"multan","modified_date":"0000-00-00","plan_id":"25","role":"driver","available_seats":"2","per_head_charge":"2500","vehical_type":"jeep"},{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"0000-00-00","current_location":"peshawar","destination":"mianwali","modified_date":"0000-00-00","plan_id":"7","role":"driver","available_seats":"1","per_head_charge":"1500","vehical_type":""}];
                 console.log("tour data is : "+$scope.tours);
             });
        }
@@ -294,7 +299,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         $timeout(function () {
             console.log('Hiding Now')
             $ionicLoading.hide();
-        }, 2000);
+        }, 500);
         
     })
     .controller('SignupCtrl', function($scope, $http, SweetAlert) {
