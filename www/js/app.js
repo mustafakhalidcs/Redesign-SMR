@@ -83,7 +83,7 @@
           controller: 'tourCtrl'
         }
       },
-      params: {'destination': ':destination' , 'departure_date' : ':departure_date' , 'command' : ':command'}
+      params: {'destination': ':destination' , 'departure_date' : ':departure_date' , 'email' : ':email' , 'command' : ':command'}
     })
     .state('app.signin', {
       url: '/signin',

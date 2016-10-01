@@ -53,12 +53,7 @@
                   <div class="item text-right profilediv">
                   <p class="blue"><span >Available Seats</span>{{detail[0].available_seats}}</p> 
                   </div>
-                <button class="button button-block joinbtn" onclick="swal({   
-title: 'Sent',
-            text: 'Your request has been sent',
-            timer: 1100,
-          type:'success',
-            showConfirmButton: false });" > 
+                <button class="button button-block joinbtn" ng-click="join(detail[0].email)"> 
                  Join
                 </button>
               </div>
