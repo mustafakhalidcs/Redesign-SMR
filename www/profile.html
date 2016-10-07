@@ -1,5 +1,9 @@
 <ion-view view-title="Profile" class="bg1 profile">
     <ion-content scrollbar-y="true" has-bouncing="false" class="transparent">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="viewProfile()">
+    </ion-refresher>
         <ion-list>
             <ion-item type="item-text-wrap" class="transparent no-border pad0">
                 <div class="card">

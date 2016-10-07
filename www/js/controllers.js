@@ -1,74 +1,42 @@
 angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope , $state) {
-    // if (angular.isUndefined($rootScope.user_id) || $rootScope.user_id == null) {
-    //     $state.go('app.signin');
-    // }
+    if (angular.isUndefined($rootScope.user_id) || $rootScope.user_id == null) {
+        $state.go('app.signin');
+    }
     $scope.logout = function(){
-        $rootScope.user_id = {};
+        $rootScope.user_id = null;
     }
 
 })
 
-// With the new view caching in Ionic, Controllers are only called
-// when they are recreated or on app start, instead of every page change.
-// To listen for when this page is active (for example, to refresh data),
-// listen for the $ionicView.enter event:
-//$scope.$on('$ionicView.enter', function(e) {
-//});
 
-
-
-.controller('demoCtrl', ['SweetAlert', function(SweetAlert) {
-    var vm = this;
-    vm.alert = function() {
-        SweetAlert.swal("I'm a fancy Alert"); //simple alert
-    }
-    vm.confirm = function() {
-        SweetAlert.swal({
-
-            title: "Are you sure?",
-            text: "You want to cancel the plan?",
-            type: "warning",
-            showConfirmButton: true,
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes", 
-            cancelButtonText: "No",
-            closeOnConfirm: false,
-            closeOnCancel: true
-        }, function() {
-            swal("Cancel!", "Your Plan has been cancelled.", "success");
-        });
-    }
-}])
-
-.controller('ProfileCtrl', function($scope, $http, $rootScope) {
+.controller('ProfileCtrl', function($scope, $http, $rootScope , $stateParams) {
         console.log($rootScope.user_id);
-
-        $http({
-            method: "GET",
-            params: { user_id: $rootScope.user_id , "command" : "profile"},
-            url: "http://localhost:8080/ShareMyRide/user-profile.php"
-        }).then(function(response) {
-            $scope.user_data = response.data;
-            console.log($scope.user_data);
-        });
+        $scope.viewProfile = function(){
+            console.log("We are viewing profile of : " + $rootScope.user_id);
+            $http({
+                method: "GET",
+                params: { user_id: $rootScope.user_id , "command" : "profile"},
+                url: "http://localhost:8080/ShareMyRide/user-profile.php"
+            }).then(function(response) {
+                $scope.user_data = response.data;
+                console.log("Profile data is : " + $scope.user_data);
+            });
+        }
+        
 
 
 
     })
-    .controller('tourDetailCtrl', function($scope , $stateParams , $http , $rootScope , SweetAlert) {
-        /*
-        @ Join request from rider     
-        */
-        $scope.isDisabled = false;
-        $scope.join = function(email) {
-            $scope.driver_email=email;
-            console.log($rootScope.user_id);
-            console.log($stateParams.plan_id);
-            $scope.isDisabled = true;
-            $http({
+.controller('tourDetailCtrl', function($scope, $stateParams, $http, $rootScope, SweetAlert) {
+    $scope.isDisabled = false;
+    $scope.join = function(email) {
+        $scope.driver_email=email;
+        console.log($rootScope.user_id);
+        console.log($stateParams.plan_id);
+        $scope.isDisabled = true;
+        $http({
             method: 'POST',
             data: $.param({
                 'plan_id' : $stateParams.plan_id,
@@ -106,13 +74,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             
         });
 
-        
-        
-
-    })
-
-
-
+})
 
 .controller('ModalCtrl', function($scope, $ionicModal, $http, SweetAlert, $state, $rootScope ,$filter) {
     console.log($rootScope.user_id);
@@ -247,12 +209,20 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 params:{"email" : $rootScope.user_id , "command" : "listAllTours"}
             }).then(function(response){
                 $scope.tours = response.data;
-                $scope.tours = [{"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"0000-00-00","current_location":"peshawar","destination":"lahore","modified_date":"2016-09-20","plan_id":"6","role":"driver","available_seats":"2","per_head_charge":"800","vehical_type":"jeep"},
-                {"first_name":"Murtaza","last_name":"Khalid","email":"admin@test.com","departure_date":"0000-00-00","current_location":"peshawar","destination":"lahore","modified_date":"2016-09-20","plan_id":"6","role":"driver","available_seats":"2","per_head_charge":"800","vehical_type":"jeep"},
-                ];
-                
                 console.log("tour data is : "+$scope.tours);
             });
+       }
+       $scope.getToursList = function(){
+        console.log("Hello from getToursList method");
+        $http({
+                url: "http://localhost:8080/ShareMyRide/tours-list.php", 
+                method: "GET",
+                params:{"email" : $rootScope.user_id , "command" : "listAllTours"}
+            }).then(function(response){
+                $scope.tours = response.data;
+                console.log("tour data is : "+$scope.tours);
+            });
+
        }
     })
 
@@ -275,33 +245,33 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 
 .controller('NotifCtrl', function($scope ,$http, $rootScope) {
-
-    $scope.notifs = [
-        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016" }
-
-    ];
+    console.log('Hello from view Notification');
     $http({
-            method: "GET",
-            params: { "driver_email": $rootScope.user_id , "command" : "showNotifications"},
-            url: "http://localhost:8080/ShareMyRide/notification.php"
-        }).then(function(response) {
-            console.log("data is :" + response.data);
-        });
-
+        method: "GET",
+        params: { "driver_email": $rootScope.user_id , "command" : "showNotifications"},
+        url: "http://localhost:8080/ShareMyRide/notification.php"
+    }).then(function(response) {
+        $scope.notifications = response.data;
+    });
+    
 })
 
-.controller('UptoursCtrl', function($scope,$http,$rootScope) {
-    $scope.notifs = [
-        { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016" }
-
-    ];
-    $http({
-            method: "GET",
-            params: { "driver_email": $rootScope.user_id , "command" : "showUpcomingTours"},
-            url: "http://localhost:8080/ShareMyRide/upcoming-tours.php"
-        }).then(function(response) {
-            console.log("data is :" + response.data);
-        });
+.controller('UptoursCtrl', function($scope,$http,$rootScope,httpService,$ionicLoading) {
+    $ionicLoading.show({
+        template: 'Loading...'
+    });
+    httpService.getUpcomingTours().then(function(){
+        $scope.upcoming_tours = response.data;
+        $ionicLoading.hide();
+    });
+    // $http({
+    //     method: "GET",
+    //     params: {"email" : $rootScope.user_id, "command" : "showUpcomingTours"},
+    //     url: "http://localhost:8080/ShareMyRide/upcoming-tours.php"
+    // }).then(function(response) {
+    //     $scope.upcoming_tours = response.data;
+    //     console.log("Upcoming tours are: " + response.data);
+    // });
 
 })
 
@@ -309,8 +279,8 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         $ionicLoading.show({
             content: 'Loading',
             animation: 'fade-in',
-            showBackdrop: true,
-            maxWidth: 200,
+            showBackdrop: false,
+            maxWidth: 1000,
             showDelay: 0
         }).then(function() {
             $scope.signin = {};
@@ -328,7 +298,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                     },
                     url: "http://localhost:8080/ShareMyRide/login.php"
-                }).success(function(data, status, headers, config) {
+                }).success(function(data, status, headers, conupfig) {
                     if (data == 1) {
                         $rootScope.user_id = $scope.signin.email;
                         SweetAlert.swal("", "Successfull log in", "success");
@@ -355,7 +325,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         $timeout(function () {
             console.log('Hiding Now')
             $ionicLoading.hide();
-        }, 500);
+        }, 1000);
         
     })
     .controller('SignupCtrl', function($scope, $http, SweetAlert) {
@@ -382,5 +352,48 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 console.log('Data posted');
             });
         }
+    })
+    
+    // .factory('tourslistService' , function($http){
+    //     return {
+    //         all : function(){
+    //             return $http({
+    //                 url: "http://localhost:8080/ShareMyRide/tours-list.php", 
+    //                 method: "GET",
+    //                 params:{"email" : $rootScope.user_id , "command" : "listAllTours"}
+    //             });
+    //         }
+
+    //     }
+    // })
+.factory('httpService' , function($http,$rootScope){
+    var factory={};
+    factory.tourList = function(){
+        console.log("Hello from service tour list");
+        $http({
+            url: "http://localhost:8080/ShareMyRide/tours-list.php", 
+            method: "GET",
+            params:{"email" : $rootScope.user_id , "command" : "listAllTours"}
+        });
+        }
+    factory.viewProfile = function(){
+        console.log("Hello from service View profile");
+        $http({
+            method: "GET",
+            params: { user_id: $rootScope.user_id , "command" : "profile"},
+            url: "http://localhost:8080/ShareMyRide/user-profile.php"
+            }).then(function(response) {
+                $scope.user_data = response.data;
+                console.log("Profile data is : " + $scope.user_data);
+            }); 
+    }
+    factory.getUpcomingTours = function(){
+       $http({
+            method: "GET",
+            params: {"email" : $rootScope.user_id , "command" : "showUpcomingTours"},
+            url: "http://localhost:8080/ShareMyRide/upcoming-tours.php"
+        }); 
+    }
+        return factory;
     })
     

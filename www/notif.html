@@ -1,16 +1,18 @@
 <ion-view view-title="Requests" class="bg2 full-image notif">
    <ion-content scrollbar-y="true" has-bouncing="false"  class="transparent" >
+   <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="viewNotification()">
+    </ion-refresher>
       <ion-list>
-         <ion-item  type="item-text-wrap" class="transparent" >
+         <ion-item  type="item-text-wrap" class="transparent" collection-repeat="notification in notifications">
           <div class="card">
             <div class="item item-avatar item-text-wrap gray" width="400" height="200" >
                 <img src="img/76.jpg"/>
-                <h2 class="gren cap" >peshawar - lahore </h2>
-                <label>27/3/2016</label>
-                <h3><span>Anmol Irfan  </span> wants to join you.</h3>
+                <h2 class="gren cap" >{{notification.current_location}} - {{notification.destination}} </h2>
+                <h3><span>{{notification.first_name}} &nbsp; {{notification.last_name}}  </span> wants to join your on {{notification.departure_date}}.</h3>
                 <h3> Required seats are <span>4</span>.</h3>
-                <h3><span>3 </span>females and one male </h3>
-                   <div class="item item-button-right no-border transparent" >
+                <div class="item item-button-right no-border transparent" >
                         <div class="buttons rite" >
                             <button class="button bluebtn" >
                               Accept
@@ -23,35 +25,6 @@
             </div>
           </div>
          </ion-item>
-         <ion-item type="item-text-wrap" class="transparent no-border" >
-          <div class="card" >
-              <div class="item item-avatar item-text-wrap gray " width="400" height="200">
-               <img src="img/76.jpg"/>
-               <h3><span>Mustafa Khalid  </span> has accepted your request of travelling from <span >nowshera </span>to<span > Peshawar</span> at <span > 7am</span> on<span > 28/09/2016</span>.</h3>
-               <h2 class="text-center gren msg"> Have A Safe Journey.</h2>
-              </div>
-          </div>
-        </ion-item>
-        <ion-item  type="item-text-wrap"  class="transparent no-border">
-          <div class="card" >
-            <div class="item item-avatar item-text-wrap gray " width="400" height="200" >
-            <img src="img/76.jpg" />
-            <h2 class="cap gren">peshawar - lahore </h2>
-            <label >27/3/2016</label>
-            <h3><span >Anmol Irfan  </span>has rejected your request on <span > 28/09/2016</span> due to some reason.Do you wish to find some other?</h3>
-                <div class="item item-button-right no-border transparent" >
-                    <div class="buttons rite" >
-                        <button class="button bluebtn">
-                          Search other
-                        </button>
-                        <button class="button grenbtn" >
-                       No'Thanks
-                        </button>
-                    </div>
-               </div>
-            </div>
-        </div>
-       </ion-item>  
     </ion-list>
   </ion-content>
 </ion-view>

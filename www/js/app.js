@@ -63,7 +63,8 @@
             controller: 'UptoursCtrl'
 
         }
-      }
+      },
+      params: {'email': ':email' , 'command' : ':command'}
     })
     .state('app.home', {
       url: '/home',
