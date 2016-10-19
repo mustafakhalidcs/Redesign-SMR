@@ -8,7 +8,7 @@
                 <p>
                     <label class="item item-input" ng-class="{ 'has-errors' : riderForm.destination.$invalid && !riderForm.destination.$pristine,'no-errors' : riderForm.destination.$valid} ">
                         <i class="icon ion-arrow-graph-up-right placeholder-icon"></i>
-                        <input type="text" name="destination" ng-model="rider.destination" ng-minlength="5" ng-maxlength="20" placeholder="Destination" required>
+                        <input type="text" name="destination" ng-model="rider.destination" ng-minlength="3" ng-maxlength="20" placeholder="Destination" required>
                     </label>
                     <div class="error-container" ng-show="riderForm.destination.$error" ng-messages="riderForm.destination.$error" ng-if="riderForm.destination.$invalid  && !riderForm.destination.$pristine ">
                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter full destination.</p>
@@ -20,7 +20,7 @@
                  <p>
                     <label class="item item-input" ng-class="{ 'has-errors' : riderForm.current_location.$invalid && !riderForm.current_location.$pristine,'no-errors' : riderForm.current_location.$valid} ">
                         <i class="icon ion-location placeholder-icon"></i>
-                        <input type="text" name="current_location" ng-model="rider.current_location" ng-minlength="5" ng-maxlength="20" placeholder="Current Location" required>
+                        <input type="text" name="current_location" ng-model="rider.current_location" ng-minlength="3" ng-maxlength="20" placeholder="Current Location" required>
                     </label>
                     <div class="error-container" ng-show="riderForm.current_location.$error" ng-messages="riderForm.current_location.$error" ng-if="riderForm.current_location.$invalid  && !riderForm.current_location.$pristine ">
                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter full current location.</p>

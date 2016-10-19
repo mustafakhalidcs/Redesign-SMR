@@ -6,7 +6,7 @@
                 <p>
                     <label class="item item-input" ng-class="{ 'has-errors' : driverForm.destination.$invalid && !driverForm.destination.$pristine,'no-errors' : driverForm.destination.$valid} ">
                         <i class="icon ion-arrow-graph-up-right placeholder-icon"></i>
-                        <input type="text" name="destination" ng-model="driver.destination" ng-minlength="5" ng-maxlength="20" placeholder="Destination" required>
+                        <input type="text" name="destination" ng-model="driver.destination" ng-minlength="3" ng-maxlength="20" placeholder="Destination" required>
                     </label>
                     <div class="error-container" ng-show="driverForm.destination.$error" ng-messages="driverForm.destination.$error" ng-if="driverForm.destination.$invalid  && !driverForm.destination.$pristine ">
                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter full destination.</p>
@@ -17,7 +17,7 @@
                 <p>
                     <label class="item item-input" ng-class="{ 'has-errors' : driverForm.current_location.$invalid && !driverForm.current_location.$pristine,'no-errors' : driverForm.current_location.$valid} ">
                         <i class="icon ion-location placeholder-icon"></i>
-                        <input type="text" name="current_location" ng-model="driver.current_location" ng-minlength="5" ng-maxlength="20" placeholder="Current Location" required>
+                        <input type="text" name="current_location" ng-model="driver.current_location" ng-minlength="3" ng-maxlength="20" placeholder="Current Location" required>
                     </label>
                     <div class="error-container" ng-show="driverForm.current_location.$error" ng-messages="driverForm.current_location.$error" ng-if="driverForm.current_location.$invalid  && !driverForm.current_location.$pristine ">
                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter full current location.</p>

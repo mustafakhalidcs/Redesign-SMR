@@ -55,6 +55,16 @@
         }
       }
     })
+  .state('app.rider-notif', {
+      url: '/rider-notif',
+      views: {
+        'menuContent': {
+          templateUrl: 'rider-notification.html',
+            controller: 'riderNotifCtrl'
+
+        }
+      }
+    })
    .state('app.uptours', {
       url: '/uptours',
       views: {
@@ -66,15 +76,7 @@
       },
       params: {'email': ':email' , 'command' : ':command'}
     })
-    .state('app.home', {
-      url: '/home',
-      views: {
-        'menuContent': {
-          templateUrl: 'home.html',
-          controller: 'HomeCtrl'
-        }
-      }
-    })
+    
     
     .state('app.tours-list', {
       url: '/tours-list',
@@ -84,8 +86,19 @@
           controller: 'tourCtrl'
         }
       },
+      params: {'email' : ':email' , 'command' : ':command'}
+    })
+    .state('app.filtered-tour-list', {
+      url: '/filtered-tour-list',
+      views: {
+        'menuContent': {
+          templateUrl: 'filtered-tour-list.html',
+          controller: 'FilterTourList'
+        }
+      },
       params: {'destination': ':destination' , 'departure_date' : ':departure_date' , 'email' : ':email' , 'command' : ':command'}
     })
+    
     .state('app.signin', {
       url: '/signin',
       views: {
@@ -101,6 +114,15 @@
         'menuContent': {
           templateUrl: 'signin.html',
           controller: 'signin'
+        }
+      }
+    })
+    .state('app.home', {
+      url: '/home',
+      views: {
+        'menuContent': {
+          templateUrl: 'home.html',
+          controller: 'HomeCtrl'
         }
       }
     })
@@ -133,7 +155,7 @@
         controller: 'tourDetailCtrl'
       }
     },
-    params: {'plan_id' : ':plan_id' , 'command' : ':tourDetail'}
+    params: {'rider_plan_id' : ':rider_plan_id', 'driver_plan_id':':driver_plan_id','command' : ':command'}
   });
 
 // if none of the above states are matched, use this as the fallback

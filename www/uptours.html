@@ -1,16 +1,24 @@
 <ion-view view-title="upcoming Tours" class="bg5 full-image uptours">
    <ion-content scrollbar-y="true" has-bouncing="false"   class="transparent" >
-   <ion-refresher
+   <!-- <ion-refresher
       pulling-text="Pull to refresh..."
       on-refresh="getUpcomingTours()">
-    </ion-refresher>
+    </ion-refresher> -->
+    <pre>
+      {{upcoming_tours}}
+    </pre>
    <ion-list>
      <ion-item  type="item-text-wrap item-icon-right" class="transparent no-border" collection-repeat="tour in upcoming_tours">
+     <div>
+       <p>{{tour.current_location}}</p>
+     </div>
         <div class="card" >
           <div class="item  item-text-wrap gray" width="400" height="200" >
-            <h3>FROM<strong class="blue cap">peshawar</strong> TO <strong class="blue cap">lahore< </h3>
-            <h3>with <span>Anmol Irfan  </span> </h3>
-            <label>27/3/2016</label>
+            <h3>FROM<strong class="blue cap">
+            {{tour.current_location}}</strong>
+            TO <strong class="blue cap">{{tour.destination}}
+            </h3>
+            <label>{{tour.departure_date}}</label>
               <div class="item item-button-right no-border transparent" >
                 <div class="buttons rite">
                     <button class="button bluebtn" >
