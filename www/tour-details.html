@@ -64,12 +64,12 @@
            </ion-item>
          </ion-list>
         <ion-list>
-        <!-- <h3 ng-show="riderTours">Choose Your plan for Request</h3> -->
+        <h3 ng-show="riderTours">Choose Your plan to send Join Request</h3>
         <ion-item collection-repeat="riderTour in riderTours">
             <div class="card">
                 <div class="item item-thumbnail-left" width="400" height="200">
                   <img src="img/default-user.png"/>
-                  <h2 style="text-transform:capitalize;">Tou</h2>
+                  <h2 style="text-transform:capitalize;">To</h2>
                   <p>
                   <span style="color:#000">
                   From:{{riderTour.current_location}}</span>
@@ -86,7 +86,7 @@
             </div>
           </ion-item>
         </ion-list>
-        <div ng-if="!riderTour">
+        <div ng-show="riderTours">
           <div class="card">
             <p>You don't have any plans yet!</p>
             <p>

@@ -42,12 +42,12 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                     "command": "fetchRidertours"
                 }
             }).then(function(response) {
-                //if(response.data[plan_id]){
+                if(response.data[0].plan_id){
                     $scope.riderTours = response.data;
                     deferred.resolve($scope.riderTours);
                     $ionicLoading.hide();
                     console.log($scope.riderTours);
-                //}
+                }
             }, function(error) {
                 $scope.riderTours = error;
                 deferred.reject(error);
@@ -373,9 +373,9 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             params: { "driver_email": $rootScope.user_id, "command": "showNotifications" },
             url: "http://localhost:8080/ShareMyRide/notification.php"
         }).then(function(response) {
-            //if (response.data[0].plan_id) {
+            if (response.data[0].plan_id) {
             $scope.notifications = response.data;
-            //}
+            }
             console.log(response);
         });
 
@@ -386,7 +386,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             params: { "rider_email": $rootScope.user_id, "command": "showNotifications" },
             url: "http://localhost:8080/ShareMyRide/rider-notification.php"
         }).then(function(response) {
-            if(response.data){
+            if(response.data[0].plan_id){
                 $scope.notifications = response.data;
                 console.log($scope.notifications);
             }
@@ -413,22 +413,44 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         }
     })
 
-.controller('UptoursCtrl', function($scope, $http, $rootScope, httpService, $ionicLoading, $q) {
+.controller('UptoursCtrl', function($scope, $http, $rootScope, $ionicLoading, $q) {
     var deferred = $q.defer();
-    $ionicLoading.show({
-        template: 'Loading...'
-    });
-    $http({
-        method: "GET",
-        params: { "email": $rootScope.user_id, "command": "showUpcomingTours" },
-        url: "http://localhost:8080/ShareMyRide/upcoming-tours.php"
-    }).then(function(response) {
-        $scope.upcoming_tours = response.data;
-        deferred.resolve($scope.upcoming_tours);
-        $ionicLoading.hide();
-    });
-    $scope.upcoming_tours = deferred.promise;
-    console.log($scope.upcoming_tours);
+            $ionicLoading.show();
+            $http({
+                method: "GET",
+                url: "http://localhost:8080/ShareMyRide/upcoming-tours.php",
+                params: {
+                    "email": $rootScope.user_id,
+                    "command": "showUpcomingTours"
+                }
+            }).then(function(response) {
+                console.log(response.data);
+                if(response.data[0].destination){
+                    $scope.MyTours = response.data;
+                    deferred.resolve($scope.MyTours);
+                    $ionicLoading.hide();
+                    console.log($scope.MyTours);
+                }
+            }, function(error) {
+                $scope.riderTours = error;
+                deferred.reject(error);
+            });
+            $scope.MyTours = deferred.promise;
+    // var deferred = $q.defer();
+    // $ionicLoading.show({
+    //     template: 'Loading...'
+    // });
+    // $http({
+    //     method: "GET",
+    //     params: { "email": $rootScope.user_id, "command": "showUpcomingTours" },
+    //     url: "http://localhost:8080/ShareMyRide/upcoming-tours.php"
+    // }).then(function(response) {
+    //     $scope.upcoming_tours = response.data;
+    //     deferred.resolve($scope.upcoming_tours);
+    //     $ionicLoading.hide();
+    // });
+    // $scope.upcoming_tours = deferred.promise;
+    // console.log($scope.upcoming_tours);
 })
 
 .controller('signin', function($scope, $http, SweetAlert, $state, $rootScope, $ionicLoading, $timeout) {
