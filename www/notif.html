@@ -28,7 +28,13 @@
                         </div>
                     </div>
                 </div>
+                
             </ion-item>
         </ion-list>
+        <div ng-if="!notifications">
+            <div class="card">
+                <h3>You don't have any requests yet!</h3>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

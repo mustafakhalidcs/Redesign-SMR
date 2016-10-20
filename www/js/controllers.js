@@ -42,11 +42,12 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                     "command": "fetchRidertours"
                 }
             }).then(function(response) {
-                $scope.riderTours = response.data;
-                deferred.resolve($scope.riderTours);
-                $ionicLoading.hide();
-                console.log($scope.riderTours);
-
+                //if(response.data[plan_id]){
+                    $scope.riderTours = response.data;
+                    deferred.resolve($scope.riderTours);
+                    $ionicLoading.hide();
+                    console.log($scope.riderTours);
+                //}
             }, function(error) {
                 $scope.riderTours = error;
                 deferred.reject(error);
@@ -372,19 +373,23 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             params: { "driver_email": $rootScope.user_id, "command": "showNotifications" },
             url: "http://localhost:8080/ShareMyRide/notification.php"
         }).then(function(response) {
+            //if (response.data[0].plan_id) {
             $scope.notifications = response.data;
-            console.log($scope.notifications);
+            //}
+            console.log(response);
         });
 
     })
     .controller('riderNotifCtrl', function($scope, $http, $rootScope) {
         $http({
             method: "GET",
-            params: { "driver_email": $rootScope.user_id, "command": "showNotifications" },
+            params: { "rider_email": $rootScope.user_id, "command": "showNotifications" },
             url: "http://localhost:8080/ShareMyRide/rider-notification.php"
         }).then(function(response) {
-            $scope.notifications = response.data;
-            console.log($scope.notifications);
+            if(response.data){
+                $scope.notifications = response.data;
+                console.log($scope.notifications);
+            }
         });
         $scope.markAsRead = function(plan_id) {
             console.log(plan_id);
