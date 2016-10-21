@@ -55,6 +55,16 @@
         }
       }
     })
+  .state('app.rider-notif', {
+      url: '/rider-notif',
+      views: {
+        'menuContent': {
+          templateUrl: 'rider-notification.html',
+            controller: 'riderNotifCtrl'
+
+        }
+      }
+    })
    .state('app.uptours', {
       url: '/uptours',
       views: {
@@ -62,6 +72,48 @@
           templateUrl: 'uptours.html',
             controller: 'UptoursCtrl'
 
+        }
+      },
+      params: {'email': ':email' , 'command' : ':command'}
+    })
+    
+    
+    .state('app.tours-list', {
+      url: '/tours-list',
+      views: {
+        'menuContent': {
+          templateUrl: 'tours-list.html',
+          controller: 'tourCtrl'
+        }
+      },
+      params: {'email' : ':email' , 'command' : ':command'}
+    })
+    .state('app.filtered-tour-list', {
+      url: '/filtered-tour-list',
+      views: {
+        'menuContent': {
+          templateUrl: 'filtered-tour-list.html',
+          controller: 'FilterTourList'
+        }
+      },
+      params: {'destination': ':destination' , 'departure_date' : ':departure_date' , 'email' : ':email' , 'command' : ':command'}
+    })
+    
+    .state('app.signin', {
+      url: '/signin',
+      views: {
+        'menuContent': {
+          templateUrl: 'signin.html',
+          controller: 'signin'
+        }
+      }
+    })
+    .state('app.login', {
+      url: '/',
+      views: {
+        'menuContent': {
+          templateUrl: 'signin.html',
+          controller: 'signin'
         }
       }
     })
@@ -74,36 +126,39 @@
         }
       }
     })
-    .state('app.signin', {
-      url: '/signin',
-      views: {
-        'menuContent': {
-          templateUrl: 'signin.html',
-          controller: 'signin'
-        }
-      }
-    })
-   .state('signup', {
+
+  .state('app.signup', {
     url: '/signup',
-    templateUrl: 'signup.html',
-      controller: 'SignupCtrl'
+    views: {
+      'menuContent': {
+        templateUrl: 'signup.html',
+        controller: 'SignupCtrl' 
+      }
+    }
   })
 
-
-  .state('app.single', {
-    url: '/profile/:profileId',
+  .state('app.profile', {
+    url: '/profile',
     views: {
       'menuContent': {
         templateUrl: 'profile.html',
         controller: 'ProfileCtrl'
       }
-    }
+    },
+    params:{'user_id' : ':user_id' , 'command' : ':profile'}
+  })
+  .state('app.tourDetail', {
+    url: '/tourDetail?plan_id',
+    views: {
+      'menuContent': {
+        templateUrl: 'tour-details.html',
+        controller: 'tourDetailCtrl'
+      }
+    },
+    params: {'rider_plan_id' : ':rider_plan_id', 'driver_plan_id':':driver_plan_id','command' : ':command'}
   });
 
-   
-   
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/home');
+// if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/app/signin');
 });
  

@@ -1,0 +1,98 @@
+<ion-view view-title="Tour Detail" class="bg1 profile">
+   <ion-content scrollbar-y="true" has-bouncing="false" class="transparent" >
+   <!-- <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="joinRequest()">
+  </ion-refresher> -->
+    <ion-item  type="item-text-wrap" class="transparent no-border pad0" >
+          <div class="card">
+              <!--  <img src="img/76.jpg" class="full-image" /> -->
+                  <div class="item profileitem" height="200" >
+                        <div class="row pad0" >
+                        <div class="col col-35 ">
+                           <div class="item item-thumbnail-left item-text-wrap transparent pad0"   menu-close >
+                          <img  src="img/a3.png">
+                          </div>
+                        </div>
+                        <div class="col col-45 col-center">  
+                              <h2 class="whitec word">{{detail[0].first_name}}&nbsp;{{detail[0].last_name}}</h2>
+                              <p>Convience is of type {{detail[0].vehical_type}}</p> 
+                              <p ng-if="detail[0].smoker">
+                                {{detail[0].first_name}} is smoker
+                              </p>
+                              <p ng-if="detail[0].music_lover">
+                                {{detail[0].first_name}} is Music Lover
+                              </p>
+                        </div>
+                        <div class="col col-20 col-center">
+                              <div class="circle-text time">
+                                  <div>
+                                  <h3 class="circle-text-top40">17</h3>
+                                  <h3 class="circle-text-top3"> am</h3>
+                                  </div>
+                              </div>
+                        </div>
+                       </div>  
+                       <div class="row">
+                          <div class="col col-100">
+                            <h3 class="whitec word">{{detail[0].mobile}}</h3>
+                            <p>{{detail[0].email}}</p>
+                          </div>
+                       </div>
+                  </div>
+              <div class="item text-right profilediv">
+              <p class="blue"> <span >current location</span>{{detail[0].current_location}} </p> 
+              </div>
+              
+              <div class="item text-right profilediv" >
+                 <p class="blue"><span >Destination</span>{{detail[0].destination}}</p> 
+              </div>
+              
+              <div class="item text-right profilediv">
+                <p class="blue"> <span >Route</span>{{detail[0].route}}</p> 
+              </div>
+              <div class="item text-right profilediv">
+                <p class="blue"> <span >per head charge</span>{{detail[0].per_head_charge}}</p> 
+              </div>
+                  <div class="item text-right profilediv">
+                  <p class="blue"><span >Available Seats</span>{{detail[0].available_seats}}</p> 
+                  </div>
+                <button class="button button-block joinbtn" ng-click="joinRequest(detail[0].email,detail[0].plan_id)"> 
+                 Join
+                </button>
+              </div>
+           </ion-item>
+         </ion-list>
+        <ion-list>
+        <h3 ng-show="riderTours">Choose Your plan to send Join Request</h3>
+        <ion-item collection-repeat="riderTour in riderTours">
+            <div class="card">
+                <div class="item item-thumbnail-left" width="400" height="200">
+                  <img src="img/default-user.png"/>
+                  <h2 style="text-transform:capitalize;">To</h2>
+                  <p>
+                  <span style="color:#000">
+                  From:{{riderTour.current_location}}</span>
+                  </p>
+                  <p>
+                  <span style="color:#000">
+                  To:{{riderTour.destination}}</span>
+                  </p>
+                  <label>Move at :{{riderTour.departure_date}}</label>
+                  <button class="button button-block joinbtn" ng-click="sendRequest(riderTour.plan_id, detail[0].email)"> 
+                    Send Request for this plan
+                    </button>
+                </div>
+            </div>
+          </ion-item>
+        </ion-list>
+        <div ng-show="riderTours">
+          <div class="card">
+            <p>You don't have any plans yet!</p>
+            <p>
+              <a href="#app/home">MAKE A PLAN NOW!</a>
+            </p>
+          </div>
+        </div>
+        </ion-content>
+</ion-view>

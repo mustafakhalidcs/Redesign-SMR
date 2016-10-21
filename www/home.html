@@ -1,6 +1,6 @@
 <ion-view view-title="Home" class="bg1 home">
    <ion-content scrollbar-y="true" has-bouncing="false"   class="has-footer transparent  " >
-            <img src="img/bg.png" class="full-image" />
+            <!-- <img src="img/bg.png" class="full-image" /> -->
      <ion-list >
       <ion-item collection-repeat="item in items"  type="item-text-wrap" class="transparent"  >
           <div class="card" style=" ">
@@ -10,7 +10,7 @@
                    <a href="#/app/profile/{{item.id}}" class=" blue">{{item.name}}</a></h2>
                    <p> <span>To:</span>    {{item.to}}</p>
                    <p> <span>From:</span>    {{item.from}}</p>
-                    <label>{{item.date}}</label>
+                   <label>{{item.date}}</label>
                 </div>
          </div>    
       </ion-item>

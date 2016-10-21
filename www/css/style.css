@@ -61,6 +61,13 @@
 .pad0{
     padding:0px;
 }
+.word{
+    text-transform:capitalize;
+    word-wrap:break-word;
+}
+.che{
+    border:0px; padding-top:5px; padding-bottom:5px; display:inline-block;
+}
 .home ion-item , .notif ion-item{
 border:none; padding-top:0px; 
 }
@@ -103,6 +110,7 @@ border:none; padding-top:0px;
      font-family:script;
     padding:10px 0px;
 }
+
 .uptours .card{
       margin: 10px 10px 0px 10px; 
 }
@@ -168,6 +176,9 @@ h2{
     color:#213a61;
     font-weight:bold;
 }
+.ul1 >a{
+    background:transparent;
+}
 .pro{
     background:#406788;
 }
@@ -204,6 +215,12 @@ h2{
     margin-top:-0.5em;
     text-align:center;
     color:#47caaa;
+}
+.circle-text-top3{
+    padding-top:3%;
+}
+.circle-text-top40{
+     padding-top:40%;
 }
 /*
 .dform .item{
@@ -357,3 +374,8 @@ input.ng-valid {
     box-shadow:inset 1px 1px 2px 0 #BECDD2;
     transition: box-shadow 0.3s;
 }
+/*Custom card styling*/
+.tour-card{
+  margin-top: 15px !important;
+}
+/*ends here*/

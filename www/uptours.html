@@ -1,26 +1,32 @@
 <ion-view view-title="upcoming Tours" class="bg5 full-image uptours">
-   <ion-content scrollbar-y="true" has-bouncing="false"   class="transparent" >     
-   <ion-list >
-     <ion-item  type="item-text-wrap item-icon-right" class="transparent no-border" >
-        <div class="card" >
-          <div class="item  item-text-wrap gray" width="400" height="200" >
-            <h2 class="blue cap">peshawar - lahore </h2>
-            <h3>with <span>Anmol Irfan  </span> </h3>
-            <label>27/3/2016</label>
-        
-              <div class="item item-button-right no-border transparent" >
-                <div class="buttons rite " ng-controller="demoCtrl as demo">
-<!--                   <button class="button bluebtn " onclick="sweetAlert('Greetings', 'Hi', 'error');"  > -->
-                    <button class="button bluebtn " >
-                     Update Plan
-                    </button>
-              
-                     <button class="button grenbtn " ng-click="demo.confirm()">Cancel Plan</button>
+   <ion-content scrollbar-y="true" has-bouncing="false"   class="transparent" >
+   <!-- <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="getUpcomingTours()">
+    </ion-refresher> -->
+   <ion-list ng-show="MyTours">
+    <ion-item collection-repeat="riderTour in MyTours">
+            <div class="card">
+                <div class="item item-thumbnail-left" width="400" height="200">
+                  <img src="img/default-user.png"/>
+                  <h2 style="text-transform:capitalize;">Tou</h2>
+                  <p>
+                  <span style="color:#000">
+                  From:{{riderTour.current_location}}</span>
+                  </p>
+                  <p>
+                  <span style="color:#000">
+                  To:{{riderTour.destination}}</span>
+                  </p>
+                  <label>Move at :{{riderTour.departure_date}}</label>
+                  <p>
+                    <span>
+                      Role: {{riderTour.role}}
+                    </span>
+                  </p>
                 </div>
-             </div>
-           </div>
-         </div>   
-      </ion-item>
+            </div>
+          </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

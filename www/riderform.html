@@ -1,61 +1,101 @@
-<ion-modal-view class="transparent">  
- <ion-content class="padding dform" has-bouncing="false" >
-      <div class="list fond">
-          
+<ion-modal-view class="transparent">
+    <ion-content class="padding dform " has-bouncing="false" >
+  
+        <div class="list list-inset white pad20 " >
+        <h3 class="blue">Fill Form</h3>
+                              
+      <form name="riderForm" novalidate="" ng-submit="riderform(riderForm.$valid)">
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : riderForm.destination.$invalid && !riderForm.destination.$pristine,'no-errors' : riderForm.destination.$valid} ">
+                        <i class="icon ion-arrow-graph-up-right placeholder-icon"></i>
+                        <input type="text" name="destination" ng-model="rider.destination" ng-minlength="3" ng-maxlength="20" placeholder="Destination" required>
+                    </label>
+                    <div class="error-container" ng-show="riderForm.destination.$error" ng-messages="riderForm.destination.$error" ng-if="riderForm.destination.$invalid  && !riderForm.destination.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter full destination.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your destination is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your destination is required.</p>
+                    </div>
+                </p>
+                
+                 <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : riderForm.current_location.$invalid && !riderForm.current_location.$pristine,'no-errors' : riderForm.current_location.$valid} ">
+                        <i class="icon ion-location placeholder-icon"></i>
+                        <input type="text" name="current_location" ng-model="rider.current_location" ng-minlength="3" ng-maxlength="20" placeholder="Current Location" required>
+                    </label>
+                    <div class="error-container" ng-show="riderForm.current_location.$error" ng-messages="riderForm.current_location.$error" ng-if="riderForm.current_location.$invalid  && !riderForm.current_location.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter full current location.</p>
+                         <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your location is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Current location is required.</p>
+                    </div>
+                </p>
+                 <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : riderForm.route.$invalid && !riderForm.route.$pristine,'no-errors' : riderForm.route.$valid} ">
+                        <i class="icon ion-map placeholder-icon"></i>
+                        <input type="text" name="route" ng-model="rider.route" ng-minlength="5" ng-maxlength="20" placeholder="Route" required>
+                    </label>
+                    <div class="error-container" ng-show="riderForm.route.$error" ng-messages="riderForm.route.$error" ng-if="riderForm.route.$invalid  && !riderForm.route.$pristine ">
+                        <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Route is too short.</p>
+                        <p class="error" ng-message="maxlength"><i class="ion-information-circled"></i> Your route is too long.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Route is required.</p>
+                    </div>
+                </p>           
+                <p>
+                    <label class="item item-input" ng-class="{ 'has-errors' : riderForm.date.$invalid && !riderForm.date.$pristine,'no-errors' : riderForm.date.$valid} ">
+                        <i class="icon ion-android-calendar placeholder-icon"></i>
+                        <input type="date" name="date" ng-model="rider.departure_date"  placeholder="Date" min="{{date | date:'yyyy-MM-dd'}}" required>
+                    </label>
+                    <div class="error-container" ng-show="riderForm.date.$error" ng-messages="riderForm.date.$error" ng-if="riderForm.date.$invalid  && !riderForm.date.$pristine ">
+                        <p class="error" ng-message="min"><i class="ion-information-circled"></i> Do not select past date.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Date is required.</p>
+                    </div>
+                </p> 
+               
+                <p>
 
-              <div class="item item-text-wrap">                
-               <h2 class="blue pad10">select your RideShare</h2>
-              </div>
-          <form    
-name="RiderForm" novalidate>
-              <div class="item item-icon-left item-right">
-                   <i class="icon ion-location"></i>
-                   <input type="text" ng-model="cl" name="cl" placeholder="Current Location" required>
-                   <p>
-  <span style="color:red" ng-show="RiderForm.cl.$dirty && RiderForm.cl.$invalid ">
+                    <label class="item item-input" ng-class="{ 'has-errors' : riderForm.seats_required.$invalid && !riderForm.seats_required.$pristine,'no-errors' : riderForm.seats_required.$valid} ">
+                        <i class="icon ion-person-stalker placeholder-icon"></i>
+                        <input type="text" name="seats_required" ng-model="rider.seats_required
+"  maxlength="2" placeholder="Seats Required" required>
+                    </label>
+                    <div class="error-container" ng-show="riderForm.seats_required.$error" ng-messages="riderForm.seats_required.$error" ng-if="riderForm.seats_required.$invalid  && !riderForm.seats_required.$pristine ">
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Mention required seats.</p>
+                    </div>
+                </p>
+                <li class="item item-checkbox checkbox-positive che">
+                            Smoker
+                            <label class="checkbox">
+                                <input type="checkbox" name="smoker" ng-model="rider.smoker" ng-true-value="'yes'" ng-false-value="'no'">
+                            </label>
+                          
 
-  <span ng-show="RiderForm.cl.$error.required">Location is required.</span>
-  </span></p>
-              </div>
-              <div class="item item-icon-left item-right">
-                   <i class="icon ion-arrow-graph-up-right"></i>
-                   <input type="text" ng-model="des" name="des" placeholder="Destination" required>
-                  <p>
-  <span style="color:red" ng-show="RiderForm.des.$dirty && RiderForm.des.$invalid ">
-
-  <span ng-show="RiderForm.des.$error.required">Location is required.</span>
-  </span></p>
-              </div>
-              <div class="item item-icon-left item-right">
-                   <i class="icon ion-android-calendar"></i>
-                   <input type="date" ng-model="d" name="d" placeholder="Date" required>
-                  <p>
-  <span style="color:red" ng-show="RiderForm.d.$dirty && RiderForm.d.$invalid " >
-
-  <span ng-show="RiderForm.d.$error.required">Location is required.</span>
-  </span></p>
-              </div>
-              <div class="item item-icon-left item-right">
-                   <i class="icon ion-android-car"></i> 
-                   <input type="text"  ng-model="sr" name="sr" placeholder="Seats Required" required>
-                  <p>
-  <span style="color:red"  ng-show="RiderForm.sr.$dirty && RiderForm.sr.$invalid " >
-
-  <span ng-show="RiderForm.sr.$error.required">Location is required.</span>
-  </span></p>
-              </div>
-               <div class="item item-icon-left item-center">
-                  <div class="buttons rite" >
-                    <button class="button button-clear cancel " ng-click="modal.hide()" >
-                      Cancel
-                    </button>
-                    <button class="button button-clear post" >
-                   Post
-                    </button>
+                        </li>
+                        <li class="item item-checkbox checkbox-positive che">
+                            Music Listener
+                            <label class="checkbox">
+                                <input type="checkbox" name="music_listener" ng-model="rider.music_listener" ng-true-value="'yes'" ng-false-value="'no'">
+                            </label>
+                        </li>
+                
+                <div class="row" >
+                    <div class="col-50">
+                       <button class="button  button-small button-block buttondr bluebtn"  type="submit" ng-disabled="riderForm.$invalid">
+                       Post
+                        </button>
+                    </div>
+                    <div class="col-50">
+                                <button type="button" class="button button-small button-calm button-block" ng-click="modal.hide()">
+                                    Cancel
+                                </button>
+                    </div>
                 </div>
-              </div>
-          </form>
-     </div>
+
+
+</form> 
+
+
+            </div>
  </ion-content>
 </ion-modal-view>
+
+
 
