@@ -1,30 +1,16 @@
 <ion-view view-title="Profile" class="bg1 profile">
     <ion-content scrollbar-y="true" has-bouncing="false" class="transparent">
-<ion-list>
+        <ion-list>
             <ion-item type="item-text-wrap" class="transparent no-border pad0">
-                <div class="card">
+               <div class="card">
                     <img src="img/76.jpg" class="full-image" />
                     <div class="item profileitem" height="200">
-                        <div class="row pad0">
-                            <div class="col col-80 col-center">
-                                <span>First Name:</span>
-                                <h3 class="whitec word">{{user_data.first_name}}
-                                </h3>
-                                <span>Last Name:</span>
-                                <h2 class="whitec word">
-                                {{user_data.last_name}}
-                                </h2>
-                            </div>
-                            
-                        </div>
-                        <div class="row">
-                            <div class="col col-100">
-                            <span>Mobile :</span>
-                                <h3 class="whitec word">{{user_data.mobile}}</h3>
-                                <p>Email : {{user_data.email}}</p>
-                            </div>
-                        </div>
+                        <span>First Name: </span><h3 class="whitec word"> {{user_data.first_name}}</h3>
+                        <span>Last Name: </span><h3 class=" whitec word">{{user_data.last_name}} </h3>
+                        <span>Mobile:</span> <h3 class="whitec word">{{user_data.mobile}}</h3>
+                        <span>Email:</span><h3 class="whitec word">{{user_data.email}}</h3> 
                     </div>
+                </div>
             </ion-item>
         </ion-list>
     </ion-content>

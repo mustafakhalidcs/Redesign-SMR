@@ -8,6 +8,13 @@
         <ion-list ng-show="notifications">
             <ion-item type="item-text-wrap" class="transparent" collection-repeat="notification in notifications">
                 <div class="card">
+
+                    <div class="item item-button-right transparent">
+    <button class="button button-clear crossbtn" ng-click="markAsRead(notification.plan_id);">
+      <i class="icon ion-close-circled cross"></i>
+    </button>
+  </div>
+
                     <div class="item item-avatar item-text-wrap gray" width="400" height="200">
                         <img src="img/76.jpg" />
                         <h2 class="gren cap">{{notification.current_location}} - {{notification.destination}} </h2>
@@ -15,9 +22,11 @@
                         <h3> Required seats are <span>{{notification.seats_required}}</span>.</h3>
                         <div class="item item-button-right no-border transparent">
                             <div class="buttons rite">
+<!--
                                 <button class="button grenbtn" ng-click="markAsRead(notification.plan_id);">
                                     Mark as Read
                                 </button>
+-->
                                 <button class="button bluebtn" ng-click="acceptRequest(notification.rider_plan_id,notification.plan_id);" ng-disabled="isAllowed">
                                     Accept
                                 </button>
@@ -33,7 +42,7 @@
         </ion-list>
         <div ng-if="!notifications">
             <div class="card">
-                <h3>You don't have any requests yet!</h3>
+                <h4 class="text-center">You don't have any requests yet!</h3>
             </div>
         </div>
     </ion-content>
