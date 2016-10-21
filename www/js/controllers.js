@@ -506,7 +506,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         }, 1000);
 
     })
-    .controller('SignupCtrl', function($scope, $http, SweetAlert) {
+    .controller('SignupCtrl', function($scope, $http, SweetAlert,$rootScope,$state) {
         $scope.signup = {};
         $scope.signUp = function() {
             $http({
@@ -526,8 +526,14 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 },
                 url: "http://localhost:8080/ShareMyRide/signup.php"
             }).success(function(data, status, headers, config) {
+                if(data == 1){
                 SweetAlert.swal("", $scope.signup.first_name + " Your acount has been created", "success");
-                console.log('Data posted');
+                $rootScope.user_id = $scope.signup.email;
+                $state.go('app.home');
+                }
+                else{
+                    SweetAlert.swal("","Error occured while creating new user", "warning");
+                }
             });
         }
     })
