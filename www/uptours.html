@@ -1,29 +1,31 @@
-<ion-view view-title="upcoming Tours" class="bg5 full-image uptours">
+<ion-view view-title="upcoming Tours" class="bg1  uptours">
    <ion-content scrollbar-y="true" has-bouncing="false"   class="transparent" >
    <!-- <ion-refresher
       pulling-text="Pull to refresh..."
       on-refresh="getUpcomingTours()">
     </ion-refresher> -->
    <ion-list ng-show="MyTours">
-    <ion-item collection-repeat="riderTour in MyTours">
+    <ion-item collection-repeat="riderTour in MyTours" class="transparent" >
             <div class="card">
                 <div class="item item-thumbnail-left" width="400" height="200">
                   <img src="img/default-user.png"/>
-                  <h2 style="text-transform:capitalize;">To</h2>
+<!--                  <h2 style="text-transform:capitalize;">To</h2>-->
                   <p>
-                  <span style="color:#000">
-                  From:{{riderTour.current_location}}</span>
+                  <span >
+                  From:</span> {{riderTour.current_location}}
                   </p>
                   <p>
-                  <span style="color:#000">
-                  To:{{riderTour.destination}}</span>
+                  <span >
+                  To: </span>{{riderTour.destination}}
                   </p>
-                  <label>Move at :{{riderTour.departure_date}}</label>
+                 
                   <p>
                     <span>
-                      Role: {{riderTour.role}}
-                    </span>
+                      Role: </span> {{riderTour.role}}
+                   
                   </p>
+                     
+                     <label>Move at: {{riderTour.departure_date}}</label>
                 </div>
             </div>
           </ion-item>

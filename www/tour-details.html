@@ -1,4 +1,4 @@
-<ion-view view-title="Tour Detail" class="bg1 profile">
+<ion-view view-title="Tour Detail" class="bg1 tour-detail">
    <ion-content scrollbar-y="true" has-bouncing="false" class="transparent" >
    <!-- <ion-refresher
       pulling-text="Pull to refresh..."
@@ -7,23 +7,24 @@
     <ion-item  type="item-text-wrap" class="transparent no-border pad0" >
           <div class="card">
               <!--  <img src="img/76.jpg" class="full-image" /> -->
-                  <div class="item profileitem" height="200" >
-                        <div class="row pad0" >
-                        <div class="col col-35 ">
-                           <div class="item item-thumbnail-left item-text-wrap transparent pad0"   menu-close >
-                          <img  src="img/a3.png">
+                  <div class="item tourdetailitem" height="200" >
+                            <div class="row pad0" >
+                        <div class="col col-45 ">
+                           <div class="item item-avatar item-text-wrap transparent pad0"   menu-close >
+                          <img  src="img/76.jpg">
                           </div>
                         </div>
                         <div class="col col-45 col-center">  
-                              <h2 class="whitec word">{{detail[0].first_name}}&nbsp;{{detail[0].last_name}}</h2>
-                              <p>Convience is of type {{detail[0].vehical_type}}</p> 
-                              <p ng-if="detail[0].smoker">
+                              <h2 class="blue word">{{detail[0].first_name}}&nbsp;{{detail[0].last_name}}</h2>
+                              <h3 class="blue word">Convience is  {{detail[0].vehical_type}}</h3> 
+                              <h3 class="blue word" ng-if="detail[0].smoker">
                                 {{detail[0].first_name}} is smoker
-                              </p>
-                              <p ng-if="detail[0].music_lover">
+                              </h3>
+                              <h3 class="blue word" ng-if="detail[0].music_lover">
                                 {{detail[0].first_name}} is Music Lover
-                              </p>
+                              </h3>
                         </div>
+<!--
                         <div class="col col-20 col-center">
                               <div class="circle-text time">
                                   <div>
@@ -32,29 +33,56 @@
                                   </div>
                               </div>
                         </div>
+-->
                        </div>  
-                       <div class="row">
+                       <div class="row" >
                           <div class="col col-100">
-                            <h3 class="whitec word">{{detail[0].mobile}}</h3>
-                            <p>{{detail[0].email}}</p>
+                            <h3 class="blue word">{{detail[0].mobile}}</h3>
+                            <h3 class="blue word">{{detail[0].email}}</h3>
                           </div>
+                      </div>
+                   <div class="row icons"  >
+                        <div class="col col-50 col-center"></div>
+                           <div class="col col-30 col-center">
+                               <a href="tel:+123456789" class="tab-item" >
+    <i class="icon ion-ios-telephone"></i> Call me
+</a>
+<!--
+                        <div class="circle-text iconns">
+                                  <div>
+                                <h3 class="circle-text-top40"><a href="tel:+123456789" class="icon ion-ios-telephone"></a> </h3>
+                                      
+                                  </div>
+                              </div>
+-->
+                               </div>
+                            <div class="col col-20 col-center">
+                    
+                                  
+<!--                                <h3 class="circle-text-top40">   <a  href="#" class="icon ion-chatbubbles"></a></h3>-->
+                                      <a class="tab-item" ng-click="share()">
+    <i class="icon ion-share"></i> Share
+</a>
+                                  
+                            
+                               </div>
                        </div>
                   </div>
-              <div class="item text-right profilediv">
+              <div class="item text-right tourdetaildiv">
               <p class="blue"> <span >current location</span>{{detail[0].current_location}} </p> 
               </div>
               
-              <div class="item text-right profilediv" >
+              <div class="item text-right tourdetaildiv" >
                  <p class="blue"><span >Destination</span>{{detail[0].destination}}</p> 
               </div>
               
-              <div class="item text-right profilediv">
+              <div class="item text-right tourdetaildiv">
                 <p class="blue"> <span >Route</span>{{detail[0].route}}</p> 
               </div>
-              <div class="item text-right profilediv">
+              <div class="item text-right tourdetaildiv">
                 <p class="blue"> <span >per head charge</span>{{detail[0].per_head_charge}}</p> 
               </div>
-                  <div class="item text-right profilediv">
+                  <div class="item text-right tourdetaildiv">
                   <p class="blue"><span >Available Seats</span>{{detail[0].available_seats}}</p> 
                   </div>
                 <button class="button button-block joinbtn" ng-click="joinRequest(detail[0].email,detail[0].plan_id)"> 
@@ -62,30 +90,34 @@
                 </button>
               </div>
            </ion-item>
-         </ion-list>
-        <ion-list>
-        <h3 ng-show="riderTours">Choose Your plan to send Join Request</h3>
-        <ion-item collection-repeat="riderTour in riderTours">
+         
+        <ion-list class="tourdetails">
+        <h3 class="ridertours" ng-show="riderTours">Choose Your plan to send Join Request</h3>
+        <ion-item collection-repeat="riderTour in riderTours" class="transparent no-border">
             <div class="card">
                 <div class="item item-thumbnail-left" width="400" height="200">
                   <img src="img/default-user.png"/>
-                  <h2 style="text-transform:capitalize;">To</h2>
+<!--                  <h2 style="text-transform:capitalize;">To</h2>-->
                   <p>
-                  <span style="color:#000">
-                  From:{{riderTour.current_location}}</span>
+                  <span>
+                  From: </span>{{riderTour.current_location}}
                   </p>
                   <p>
-                  <span style="color:#000">
-                  To:{{riderTour.destination}}</span>
+                  <span>
+                      To: </span> {{riderTour.destination}}
                   </p>
-                  <label>Move at :{{riderTour.departure_date}}</label>
-                  <button class="button button-block joinbtn" ng-click="sendRequest(riderTour.plan_id, detail[0].email)"> 
+                    <br>
+                  <label>Move at: {{riderTour.departure_date}}</label>
+                    <br>
+                  
+                </div>
+                <button class="button button-block joinbtn" ng-click="sendRequest(riderTour.plan_id, detail[0].email)"> 
                     Send Request for this plan
                     </button>
-                </div>
             </div>
           </ion-item>
         </ion-list>
+    <ion-list class="ridertour">
         <div ng-show="riderTours">
           <div class="card">
             <p>You don't have any plans yet!</p>
@@ -94,5 +126,6 @@
             </p>
           </div>
         </div>
+        </ion-list>
         </ion-content>
 </ion-view>

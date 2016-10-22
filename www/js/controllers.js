@@ -96,6 +96,12 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             console.log($rootScope.user_id);
 
         });
+    $scope.share = function() {
+			alert("Share");
+			 $cordovaSocialSharing.share('Check out the plan of ShareMyRide', 'Subject', null, 'http://www.google.com');
+
+		}
+
 
     })
     .controller('filterTourDetail', function($scope, $rootScope, $http) {

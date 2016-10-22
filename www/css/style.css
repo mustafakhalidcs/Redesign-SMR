@@ -94,6 +94,7 @@ border:none; padding-top:0px;
 }
 .notif .card{
       margin: 10px 10px 0px 10px; 
+    background:#ebebeb !important;
 }
 .notif.item > label{
    font-size: 11px;
@@ -103,6 +104,7 @@ border:none; padding-top:0px;
     color:#155877;
     text-transform:capitalize;
 }
+
 .no-border{
     border:none;
 }
@@ -110,15 +112,51 @@ border:none; padding-top:0px;
      font-family:script;
     padding:10px 0px;
 }
-
+.crossbtn{
+    top:0px !important;
+    right:2px !important;
+}
+.cross{
+    font-size:20px !important;
+    color:#155877;
+}
+.uptours ion-item {
+border:none; padding-top:0px; margin-top:10px; 
+}
+.uptours .item .item-thumbnail-left{
+    padding-bottom:7px;padding-right:0px;background:#ebebeb;
+}
 .uptours .card{
-      margin: 10px 10px 0px 10px; 
+
+    margin :0px;
 }
-.uptours.item > label{
-   font-size: 11px;
+.uptours .item > label{
+   background:#b3cfda; padding:2px 10px; float:right;
 }
+
 .uptours .item  span{
     color:#155877;
+      font-weight:bold;
+    text-transform:capitalize;
+}
+.tourlist ion-item {
+border:none; padding-top:0px; margin-top:10px; 
+}
+.tourlist .item .item-thumbnail-left{
+    padding-bottom:7px;padding-right:0px;background:#ebebeb;
+}
+.tourlist .card{
+background:#ebebeb;
+    margin :0px;
+}
+.tourlist .item > label{
+   background:#b3cfda; padding:2px 10px; float:right;
+}
+
+.tourlist .item  span{
+    color:#155877;
+      font-weight:bold;
+    padding-right:7px;
     text-transform:capitalize;
 }
 .profile .card{
@@ -136,12 +174,84 @@ border:none; padding-top:0px;
 color:#fff; font-weight:bold; word-wrap:break-word;
 }
 .profileitem{
-   padding:7px 2px 0px 7px;background:#509abc;  
+/*   padding:7px 2px 5px 7px;background:#509abc;  */
+      padding:7px 2px 20px 15px;background:#005a84;  
+}
+
+.profileitem h3{
+  padding: 2px 0px 0px 8px; font-weight:700;
 }
 .profilediv {
     background:#47caaa; color:#155877; padding:5px 20px; margin-bottom:10px; color:#fff; border-top: 2px inset rgba(28, 68, 68, 0.35);
 }
+.tour-detail .card{
+      margin: 10px 10px 0px 10px; 
+}
+.tour-detail .item > label{
+   font-size: 11px;
+}
+.tour-detail .item  span{
+    color:#fff;
+    text-transform:capitalize;
+    float:left;
+}
+.tour-detail .item  p{
+color:#000; font-weight:bold; word-wrap:break-word;
+}
+.tourdetailitem{
+    background:#ebebeb !important;
+    margin:0px !important;
+    padding:0px !important;
+}
+.tourdetailitem h3{
+  padding: 2px 0px 0px 8px; font-weight:600;
+}
+.tourdetailitem >.icons{
+    background:#005a84;
+/*    background:#509abc;*/
+    margin:0px !important;
+}
 
+.tourdetaildiv {
+    background:#47caaa; color:#155877; padding:5px 20px; margin-bottom:10px; color:#fff; border-top: 2px inset rgba(28, 68, 68, 0.35);
+}
+.tourdetails ion-item{
+    border:none; padding-top:0px; margin-top:10px; 
+}
+.tourdetails .item .item-thumbnail-left{
+    padding-bottom:7px;padding-right:0px;background:#ebebeb;
+}
+.tourdetails .card{
+/*      margin: 10px 10px 0px 10px; */
+    margin :0px;
+    padding-bottom:0px !important;
+}
+.tourdetails .item > label{
+   background:#b3cfda; padding:2px 10px !important; float:right;
+}
+
+.tourdetails .item  span{
+    color:#155877 !important;
+      font-weight:bold;
+    padding-right:7px;
+    text-transform:capitalize;
+}
+.tourdetails .item p {
+    color: #666 !important;
+  font-weight:normal !important;
+    word-wrap: break-word;
+}
+.tourdetails .item > label{
+   font-size: 15px !important;
+}
+.ridertours{
+    padding:10px 0px 10px 20px ;
+    color:#155877;
+}
+.ridertour .card{
+/*      margin: 10px 10px 0px 10px; */
+    margin :0px;
+}
 
 /*
 =======
@@ -166,6 +276,15 @@ h2{
 .ul1 >.item>.icon {
     font-size:20px;
      color:#213a61;
+}
+.tab-item {
+     opacity:1 !important;
+     color:#fff; 
+}
+.tab-item .icon{
+    font-size:30px;
+     color:#fff; 
+   
 }
 .ul1> a.item{
     font-size:15px;
@@ -292,10 +411,14 @@ h2{
     color:#004965;
     padding-left:10px;
 }
+.signform input::-moz-placeholder{
+     color:#004965;
+    padding-left:10px;
+}
 .dform .icon , .signform .icon{
    color:#004965;
 }
-.dform input::-moz-placeholder ,.signform input::-moz-placeholder {
+.dform input::-moz-placeholder  {
 /*    color:white;*/
      color:grey;
     padding-left:10px;

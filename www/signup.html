@@ -78,6 +78,17 @@
                         <p class="error" ng-message="required"><i class="ion-information-circled"></i> Mobile No. is required.</p>
                     </div>
                 </p>
+<p>
+    <label class="item item-input" ng-class="{ 'has-errors' : signupForm.myImage.$invalid && !signupForm.myImage.$pristine ,'no-errors' : signupForm.myImage.$valid} ">
+                                <i class="icon ion-image placeholder-icon"></i>
+<input type="file" name="myImage" image-with-preview ng-model="image"  accept="image/jpeg,image/png" required>
+    </label>
+    <div class="error-container" ng-show="signupForm.myImage.$error.image" ng-messages="signupForm.myImage.$error" ng-if="signupForm.myImage.$invalid  && !signupForm.myImage.$pristine ">
+         <p class="error" ><i class="ion-information-circled"></i> Not a jpg or png! </p>
+ <p class="error" ng-message="required"><i class="ion-information-circled"></i> your picture is required.</p>
+</div>
+     
+</p>
                 <button class="button  button-full button-block buttondr bluebtn" type="submit" ng-disabled="signupForm.$invalid">
                     Sign Up
                 </button>
