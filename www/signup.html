@@ -81,7 +81,7 @@
 <p>
     <label class="item item-input" ng-class="{ 'has-errors' : signupForm.myImage.$invalid && !signupForm.myImage.$pristine ,'no-errors' : signupForm.myImage.$valid} ">
                                 <i class="icon ion-image placeholder-icon"></i>
-<input type="file" name="myImage" image-with-preview ng-model="image"  accept="image/jpeg,image/png" required>
+<input type="file" name="myImage" image-with-preview ng-model="signup.image"  accept="image/jpeg,image/png" required>
     </label>
     <div class="error-container" ng-show="signupForm.myImage.$error.image" ng-messages="signupForm.myImage.$error" ng-if="signupForm.myImage.$invalid  && !signupForm.myImage.$pristine ">
          <p class="error" ><i class="ion-information-circled"></i> Not a jpg or png! </p>

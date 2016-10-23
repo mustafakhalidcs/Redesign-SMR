@@ -31,6 +31,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         $scope.isDisabled = false;
 
         $scope.joinRequest = function(driver_email, driver_plan_id) {
+            $scope.loadTours = true;
             var deferred = $q.defer();
             $ionicLoading.show();
             $http({
@@ -39,6 +40,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 params: {
                     "rider_plan_id": $stateParams.plan_id,
                     "driver_plan_id": driver_plan_id,
+                    "rider_email":$rootScope.user_id,
                     "command": "fetchRidertours"
                 }
             }).then(function(response) {
@@ -47,6 +49,13 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                     deferred.resolve($scope.riderTours);
                     $ionicLoading.hide();
                     console.log($scope.riderTours);
+                }
+                else{
+                    if(response.data==0){
+                    console.log("You do not have plans yet");
+                    $ionicLoading.hide();
+                    SweetAlert.swal("","You do not have plans yet","warning");
+                    }
                 }
             }, function(error) {
                 $scope.riderTours = error;
@@ -77,7 +86,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 console.log(data);
                 if (data == 1) {
                     $scope.isDisabled = true;
-                    SweetAlert.swal("", " Your request has been sent!", "success");
+                    s
                 } else {
                     console.log(data + " Some error");
                 }
@@ -127,7 +136,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 console.log(data);
                 if (data == 1) {
                     $scope.isDisabled = true;
-                    SweetAlert.swal("", " Your request has been sent!", "success");
+                    eetAlert.swal("", " Your request has been sent!", "success");Sw
                 } else {
                     console.log(data + " Some error");
                 }
@@ -264,7 +273,9 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
     })
     .controller('tourCtrl', function($scope, $http, $rootScope) {
-
+        if (angular.isUndefined($rootScope.user_id) || $rootScope.user_id == null) {
+        $state.go('app.signin');
+        }
         $http({
             url: "http://localhost:8080/ShareMyRide/tours-list.php",
             method: "GET",
@@ -525,6 +536,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                     'email': $scope.signup.email,
                     'password': $scope.signup.password,
                     'NIC': $scope.signup.NIC,
+                    'image':$scope.signup.image,
                     "command": "createUser"
                 }),
                 headers: {
@@ -538,7 +550,8 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 $state.go('app.home');
                 }
                 else{
-                    SweetAlert.swal("","Error occured while creating new user", "warning");
+                    // SweetAlert.swal("","Error occured while creating new user", "warning");
+                    console.log(data);
                 }
             });
         }
