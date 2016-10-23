@@ -63,16 +63,13 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             });
             $scope.riderTours = deferred.promise;
         }
-        $scope.sendRequest = function(rider_plan_id, driver_email) {
+        $scope.sendRequest = function(driver_email) {
             console.log($stateParams.plan_id);
-            console.log(rider_plan_id);
-            console.log(rider_plan_id);
             console.log("Driver Email: " + driver_email);
             $scope.isDisabled = true;
             $http({
                 method: 'POST',
                 data: $.param({
-                    'rider_plan_id': rider_plan_id,
                     'plan_id': $stateParams.plan_id,
                     'driver_email': driver_email,
                     'email': $rootScope.user_id,
@@ -85,8 +82,8 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             }).success(function(data, status, headers, config) {
                 console.log(data);
                 if (data == 1) {
-                    $scope.isDisabled = true;
-                    s
+                    SweetAlert.swal("", " Your request has been sent!", 
+                        "success");
                 } else {
                     console.log(data + " Some error");
                 }
@@ -114,6 +111,28 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
     })
     .controller('filterTourDetail', function($scope, $rootScope, $http) {
+        $http({
+                method: 'POST',
+                data: $.param({
+                    'rider_plan_id': rider_plan_id,
+                    'plan_id': $stateParams.plan_id,
+                    'driver_email': driver_email,
+                    'email': $rootScope.user_id,
+                    "command": "joinRequest"
+                }),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                },
+                url: "http://localhost:8080/ShareMyRide/request.php"
+            }).success(function(data, status, headers, config) {
+                console.log(data);
+                if (data == 1) {
+                    $scope.isDisabled = true;
+                    eetAlert.swal("", " Your request has been sent!", "success");Sw
+                } else {
+                    console.log(data + " Some error");
+                }
+            });
         $scope.sendJoinRequest = function(driver_email, driver_plan_id) {
             console.log($stateParams.plan_id);
             console.log(rider_plan_id);
@@ -136,7 +155,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 console.log(data);
                 if (data == 1) {
                     $scope.isDisabled = true;
-                    eetAlert.swal("", " Your request has been sent!", "success");Sw
+                    SweetAlert.swal("", " Your request has been sent!", "success");
                 } else {
                     console.log(data + " Some error");
                 }
