@@ -194,6 +194,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         console.log($scope.driver.vehicle_type.type);
         $scope.modified_date = $filter('date')($scope.date, 'yyyy-MM-dd');
         $scope.departure_date = $filter('date')($scope.driver.departure_date, 'yyyy-MM-dd');
+        $scope.departure_tim = $filter('date')($scope.driver.departure_time,'HH:mm:a');
         $http({
             method: 'POST',
             data: $.param({
@@ -202,7 +203,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
                 'route': $scope.driver.route,
                 'departure_date': $scope.departure_date,
                 'modified_date': $scope.modified_date,
-                'departure_time': $scope.driver.departure_time,
+                'departure_time': $scope.departure_tim,
                 'per_head_charge': $scope.driver.per_head_charge,
                 'available_seats': $scope.driver.available_seats,
                 'vehicle_type': $scope.driver.vehicle_type.type,
@@ -219,6 +220,7 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             },
             url: "http://localhost:8080/ShareMyRide/driver-plan.php"
         }).success(function(data, status, headers, config) {
+            console.log(data);
             SweetAlert.swal("", " Your Plan Has been posted successfully!", "success");
 
         });
@@ -354,6 +356,9 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             }).success(function(data, status, headers, conupfig) {
                 if (data == 1) {
                     console.log("marked as read");
+                    $scope.removeItem = function(index){
+                    $scope.notifications.splice(index, 1);
+                    };
                 } else {
                     console.log(data);
                 }
@@ -442,6 +447,9 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
             }).success(function(data, status, headers, conupfig) {
                 if (data == 1) {
                     console.log("marked as read");
+                    $scope.removeItem = function(index){
+                    $scope.notifications.splice(index, 1);
+                    };
                 } else {
                     console.log(data);
                 }

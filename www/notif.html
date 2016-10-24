@@ -9,7 +9,7 @@
             <ion-item type="item-text-wrap" class="transparent" collection-repeat="notification in notifications">
                 <div class="card">
                     <div class="item item-button-right transparent">
-                        <button class="button button-clear crossbtn" ng-click="markAsRead(notification.plan_id);">
+                        <button class="button button-clear crossbtn" ng-click="markAsRead(notification.plan_id); removeItem($index);">
                             <i class="icon ion-close-circled cross"></i>
                         </button>
                     </div>

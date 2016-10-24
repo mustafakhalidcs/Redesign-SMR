@@ -4,7 +4,8 @@
       pulling-text="Pull to refresh..."
       on-refresh="joinRequest()">
   </ion-refresher> -->
-        <ion-item type="item-text-wrap" class="transparent no-border pad0">
+ 
+    <ion-item type="item-text-wrap" class="transparent no-border pad0">
             <div class="card">
                 <!--  <img src="img/76.jpg" class="full-image" /> -->
                 <div class="item tourdetailitem" height="200">
@@ -38,7 +39,8 @@
                     <div class="row">
                         <div class="col col-100">
                             <h3 class="blue word">{{detail[0].mobile}}</h3>
-                            <h3 class="blue word">{{detail[0].email}}</h3>
+                            <h3 class="blue">{{detail[0].email}}</h3>
+                            
                         </div>
                     </div>
                     <div class="row icons">
@@ -65,7 +67,13 @@
                     </div>
                 </div>
                 <div class="item text-right tourdetaildiv">
-                    <p class="blue"> <span>current location</span>{{detail[0].current_location}} </p>
+                <p class="blue"> <span>current location</span>{{detail[0].current_location}} </p>
+                </div>
+                <div class="item text-right tourdetaildiv">
+                <p class="blue"> <span>Departure Date</span>{{detail[0].departure_date}} </p>
+                </div>
+                <div class="item text-right tourdetaildiv">
+                <p class="blue"> <span>Departure Time</span>{{detail[0].departure_time}} </p>
                 </div>
                 <div class="item text-right tourdetaildiv">
                     <p class="blue"><span>Destination</span>{{detail[0].destination}}</p>
