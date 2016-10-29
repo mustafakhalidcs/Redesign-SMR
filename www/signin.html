@@ -6,7 +6,7 @@
                  <p>
                     <label class="item item-input" ng-class="{ 'has-errors' : signinForm.email.$invalid && !signinForm.email.$pristine,'no-errors' : signinForm.email.$valid} ">
                         <i class="icon ion-ios-email placeholder-icon"></i>
-                        <input type="email" name="email" ng-model="signin.email" placeholder="Enter Email" ng-minlength="13" maxlength="30" required>
+                        <input type="email" name="email" ng-model="signin.email" placeholder="Enter Email" ng-minlength="10" maxlength="30" required>
                     </label>
                     <div class="error-container" ng-show="signinForm.email.$error" ng-messages="signinForm.email.$error" ng-if="signinForm.email.$invalid && !signinForm.email.$pristine">
                         <p class="error" ng-message="required"><i class="ion-information-circled"></i> Your email address is required.</p>
