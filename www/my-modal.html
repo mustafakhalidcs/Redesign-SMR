@@ -1,7 +1,7 @@
 <ion-modal-view class="transparent">
     <ion-content class="padding dform " has-bouncing="false">
         <div class="list list-inset white pad20 ">
-            <h3 class="blue">Fill Form</h3>
+            <h3 class="blue">Enter Your Tour Details</h3>
             <form name="driverForm" novalidate="" ng-submit="driverform(driverForm.$valid)">
                 <p>
                     <label class="item item-input" ng-class="{ 'has-errors' : driverForm.destination.$invalid && !driverForm.destination.$pristine,'no-errors' : driverForm.destination.$valid} ">
@@ -78,7 +78,7 @@
                         </p>
                         <p>
                             <label class="item item-input" ng-class="{ 'has-errors' : driverForm.vehicle_type.$invalid && !driverForm.vehicle_type.$pristine,'no-errors' : driverForm.vehicle_type.$valid} ">
-                                <i class="icon ion-android-color-palette placeholder-icon"></i>
+                                <i class="icon ion-model-s placeholder-icon"></i>
                                 <select name="vehicle_type" style="width: 220px;" ng-model="driver.vehicle_type" ng-options=" typ.type for typ in types" required>
                                     <option value="">Select vehicle Type</option>
                                 </select>

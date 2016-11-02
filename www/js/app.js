@@ -27,7 +27,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMessages', 'ngImag
 
 .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
-
+.state('tour',{
+            url: '/',
+            templateUrl: 'tour.html',
+            controller: 'appTourCtrl'
+        })
         .state('app', {
         url: '/app',
         abstract: true,
@@ -98,25 +102,40 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMessages', 'ngImag
             },
             params: { 'destination': ':destination', 'departure_date': ':departure_date', 'email': ':email', 'command': ':command' }
         })
+    .state('signin', {
+      url: '/signin',
+      
+          templateUrl: 'signin.html',
+          controller: 'signin'
+        
+    })
 
-    .state('app.signin', {
-            url: '/signin',
-            views: {
-                'menuContent': {
-                    templateUrl: 'signin.html',
-                    controller: 'signin'
-                }
-            }
-        })
-        .state('app.login', {
-            url: '/',
-            views: {
-                'menuContent': {
-                    templateUrl: 'signin.html',
-                    controller: 'signin'
-                }
-            }
-        })
+  .state('signup', {
+    url: '/signup',
+  
+        templateUrl: 'signup.html',
+        controller: 'SignupCtrl'
+      
+  })
+
+//    .state('app.signin', {
+//            url: '/signin',
+//            views: {
+//                'menuContent': {
+//                    templateUrl: 'signin.html',
+//                    controller: 'signin'
+//                }
+//            }
+//        })
+//        .state('app.login', {
+//            url: '/',
+//            views: {
+//                'menuContent': {
+//                    templateUrl: 'signin.html',
+//                    controller: 'signin'
+//                }
+//            }
+//        })
         .state('app.home', {
             url: '/home',
             views: {
@@ -127,15 +146,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMessages', 'ngImag
             }
         })
 
-    .state('app.signup', {
-        url: '/signup',
-        views: {
-            'menuContent': {
-                templateUrl: 'signup.html',
-                controller: 'SignupCtrl'
-            }
-        }
-    })
+//    .state('app.signup', {
+//        url: '/signup',
+//        views: {
+//            'menuContent': {
+//                templateUrl: 'signup.html',
+//                controller: 'SignupCtrl'
+//            }
+//        }
+//    })
 
     .state('app.profile', {
             url: '/profile',
@@ -159,5 +178,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngMessages', 'ngImag
         });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/signin');
+//    $urlRouterProvider.otherwise('/app/signin');
+     $urlRouterProvider.otherwise('/');
+    
 });

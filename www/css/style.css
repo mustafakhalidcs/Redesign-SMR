@@ -149,8 +149,9 @@ border:none; padding-top:0px; margin-top:10px;
 background:#ebebeb;
     margin :0px;
 }
+
 .tourlist .item > label{
-   background:#b3cfda; padding:2px 10px; float:right;
+   background:#b3cfda; padding:2px 10px; float:right;margin-bottom:2px; display:inline-block;
 }
 
 .tourlist .item  span{
@@ -160,7 +161,8 @@ background:#ebebeb;
     text-transform:capitalize;
 }
 .profile .card{
-      margin: 10px 10px 0px 10px; 
+      margin: 10px 10px 0px 10px;
+      background:#ebebeb;
 }
 .profile.item > label{
    font-size: 11px;
@@ -500,5 +502,18 @@ input.ng-valid {
 /*Custom card styling*/
 .tour-card{
   margin-top: 15px !important;
+}
+.pad301{
+    padding-top:20px;
+    padding-left:18px;
+}
+.align1{
+    text-align:left;
+}
+.floate{
+    float:right;
+    margin-right:20px;
+    padding:2px 10px;
+
 }
 /*ends here*/

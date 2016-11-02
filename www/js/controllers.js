@@ -320,10 +320,13 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         }
     })
 
-.controller('HomeCtrl', function($scope, $ionicModal, $rootScope, $state) {
+.controller('HomeCtrl', function($scope, $ionicModal, $rootScope, $state, $ionicSlideBoxDelegate) {
     // if (angular.isUndefined($rootScope.user_id) || $rootScope.user_id == null) {
     //     $state.go('app.signin');
     // }
+   $scope.navSlide = function(index) {
+        $ionicSlideBoxDelegate.slide(index, 500);
+    }
     $scope.items = [
         { name: "mustafa khalid", to: "nowshera", from: "lahore", image: "img/76.jpg", date: "23/06/2016", id: 1 },
         { name: "anmol irfan", to: "peshawar", from: "karachi", image: "img/76.jpg", date: "23/06/2016", id: 2 },
@@ -336,7 +339,6 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
 
 
 })
-
 
 .controller('NotifCtrl', function($scope, $http, $rootScope) {
         console.log('Hello from view Notification');
@@ -497,7 +499,10 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
     // console.log($scope.upcoming_tours);
 })
 
-.controller('signin', function($scope, $http, SweetAlert, $state, $rootScope, $ionicLoading, $timeout) {
+.controller('signin', function($scope, $http, SweetAlert, $ionicHistory, $state, $rootScope, $ionicLoading, $timeout) {
+    $scope.goBack = function(){
+    $ionicHistory.goBack();
+}
         $ionicLoading.show({
             content: 'Loading',
             animation: 'fade-in',
@@ -550,7 +555,11 @@ angular.module('starter.controllers', ['oitozero.ngSweetAlert'])
         }, 1000);
 
     })
-    .controller('SignupCtrl', function($scope, $http, SweetAlert,$rootScope,$state) {
+.controller('appTourCtrl', function() {})
+    .controller('SignupCtrl', function($scope, $http, $ionicHistory, SweetAlert,$rootScope,$state) {
+    $scope.goBack = function(){
+    $ionicHistory.goBack();
+}
         $scope.signup = {};
         $scope.signUp = function() {
             $http({

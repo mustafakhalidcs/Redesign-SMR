@@ -19,11 +19,16 @@
                   <!--  <span>
                    <a href="#/app/tourDetail?plan_id={{tour.plan_id}}">Tour Detail</a>
                    </span> -->
+<!--
                    <span> Mobile </span>
                    {{tour.mobile}}
+-->
+                        <a href="tel:{{tour.mobile}}" class="tab-item align1">
+                                <i class="icon ion-ios-telephone blue"></i>
+                            </a>
                    </p>
-                   <label>Time:{{tour.departure_time}}</label>
-                   <label>Date :{{tour.departure_date}}</label>
+                   <label>Time: {{tour.departure_time}}</label>
+                   <label>Date: {{tour.departure_date}}</label>
                    
                 </div>
          </div>

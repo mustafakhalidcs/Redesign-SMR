@@ -1,31 +1,34 @@
 <ion-view view-title="Home" class="bg1 home">
-   <ion-content scrollbar-y="true" has-bouncing="false"   class="has-footer transparent  " >
-            <!-- <img src="img/bg.png" class="full-image" /> -->
-<!--
-     <ion-list >
-      <ion-item collection-repeat="item in items"  type="item-text-wrap" class="transparent"  >
-          <div class="card" >
-                <div class="item item-thumbnail-left " width="400" height="200" >
-                   <img ng-src="{{item.image}}"/>
-                   <h2 style="text-transform:capitalize;">
-                   <a href="#/app/profile/{{item.id}}" class=" blue">{{item.name}}</a></h2>
-                   <p> <span>To:</span>    {{item.to}}</p>
-                   <p> <span>From:</span>    {{item.from}}</p>
-                   <label>{{item.date}}</label>
-                </div>
-         </div>    
-      </ion-item>
-    </ion-list>  
--->
+   <ion-content scrollbar-y="true" has-bouncing="false" scroll="false"  class="has-footer transparent  " >
+        
+      <ion-slide-box pager-click="navSlide(index)" auto-play="true" does-continue="true" style="background:transparent; margin:10px; height:100%;">
+                            <ion-slide>
+                                <p></p>
+                                <h3 class="text-center" style="color:#fff;">Have A Car?</h3>
+                                <img src="img/CAR.png" style="display:block; margin:0px auto;"/>
+                                <p class="text-center" style="font-weight:600;">Are you travelling?</p>
+                                <p class="text-center" style="font-weight:600;">Want others to join you.</p>
+                                <p class="text-center" style="font-weight:600;">Click on have a car button and post your plan.</p>
+                            </ion-slide>
+                            <ion-slide>
+                                <p></p>
+                                <h3 class="text-center" style="color:#fff;">Need A Ride?</h3>
+                                <img src="img/CAR.png" style="display:block; margin:0px auto;"/>
+                                
+                                <p class="text-center" style="font-weight:600;">Wants to travel with others?</p>
+                                <p class="text-center" style="font-weight:600;">Click on join team button and post your plan.</p>
+                            </ion-slide>
+                           
+                        </ion-slide-box>
  </ion-content>
  
  <ion-footer-bar align-title="left">
         <div class="row">
           <div class="col"> 
-              <a class="button button-block buttondr bluebtn " ng-controller="ModalCtrl" ng-click="openModal()" >Driving</a>
+              <a class="button button-block buttondr bluebtn " ng-controller="ModalCtrl" ng-click="openModal()" >Have a Car</a>
           </div>
           <div class="col">
-               <button class="button button-block buttondr grenbtn" ng-controller="RiderModalCtrl" ng-click="openModal()" >Riding</button>
+               <button class="button button-block buttondr grenbtn" ng-controller="RiderModalCtrl" ng-click="openModal()" >Join Team</button>
           </div>
         </div>
 </ion-footer-bar>

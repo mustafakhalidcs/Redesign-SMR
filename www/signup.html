@@ -1,4 +1,11 @@
 <ion-view view-title="Signup" class="bg1 profile">
+    <ion-nav-bar class="bar-header ab">
+    <ion-nav-buttons side="left">
+    <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
+      <i class="icon ion-ios-arrow-back whitec"></i> 
+    </button>
+  </ion-nav-buttons>
+        </ion-nav-bar>
     <ion-content class="padding signform " has-bouncing="false" scrollbar-y="true">
         <div class="list list-inset  pad2 transparent">
             <h3 class="blue text-center">Share my Ride</h3>
@@ -75,7 +82,7 @@
                     </label>
                     <div class="error-container" ng-show="signupForm.NIC.$error" ng-messages="signupForm.NIC.$error" ng-if="signupForm.NIC.$invalid && !signupForm.NIC.$pristine">
                         <p class="error" ng-message="minlength"><i class="ion-information-circled"></i> Enter 13 digit code</p>
-                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> Mobile No. is required.</p>
+                        <p class="error" ng-message="required"><i class="ion-information-circled"></i> CNIC is required.</p>
                     </div>
                 </p>
 

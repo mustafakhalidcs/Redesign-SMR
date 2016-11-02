@@ -1,4 +1,11 @@
 <ion-view view-title="Signin" class="bg1 profile">
+    <ion-nav-bar class="bar-header ab">
+    <ion-nav-buttons side="left">
+    <button class="button back-button buttons button-clear header-item" ng-click="goBack()">
+      <i class="icon ion-ios-arrow-back whitec"></i> 
+    </button>
+  </ion-nav-buttons>
+        </ion-nav-bar>
     <ion-content class="padding signform has-header" has-bouncing="false">
         <div class="list list-inset transparent pad20 ">
             <h3 class="blue text-center">Share my Ride</h3>
@@ -33,7 +40,8 @@
                 </button>
             </form>
 <!--            <a href="#signup" style="text-decoration:none;">-->
-                 <a href="#/app/signup" style="text-decoration:none;">
+<!--                 <a href="#/app/signup" style="text-decoration:none;">-->
+     <a href="#signup" style="text-decoration:none;">
                 <h5 class="text-center"> Not a member? Sign Up </h5></a>
         </div>
     </ion-content>
